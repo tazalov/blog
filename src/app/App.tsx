@@ -6,12 +6,10 @@ import {FC} from 'react';
 import './styles/index.scss';
 
 export const App: FC = ({}) => {
-  
-  const {theme, toggleTheme} = useTheme()
+  const {theme} = useTheme()
   
   return (
       <div className={cn('app', {}, [theme])}>
-        <button onClick={toggleTheme}>theme</button>
         <Navbar/>
         <AppRouter/>
       </div>
