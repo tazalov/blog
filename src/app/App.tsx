@@ -1,12 +1,13 @@
+import {useTheme} from '@/app/providers/theme';
+import {AboutPage} from '@/pages/about-page';
+import {MainPage} from '@/pages/main-page';
 import {FC, Suspense} from 'react';
 import {Link, Route, Routes} from 'react-router-dom';
-import {cn} from '../helpers/classNames';
-import {AboutPageLazy} from '../pages/about-page/index.lazy';
-import {MainPageLazy} from '../pages/main-page/index.lazy';
-import '../styles/index.scss';
-import {useTheme} from '../theme/useTheme';
+import {cn} from 'src/shared/lib/classNames';
+import './styles/index.scss';
 
 export const App: FC = ({}) => {
+  
   const {theme, toggleTheme} = useTheme()
   
   return (
@@ -16,8 +17,8 @@ export const App: FC = ({}) => {
         <Link to={'/'}>main</Link>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            <Route path={'/about'} element={<AboutPageLazy/>}/>
-            <Route path={'/'} element={<MainPageLazy/>}/>
+            <Route path={'/about'} element={<AboutPage/>}/>
+            <Route path={'/'} element={<MainPage/>}/>
           </Routes>
         </Suspense>
       </div>
