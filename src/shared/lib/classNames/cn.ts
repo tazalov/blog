@@ -10,14 +10,14 @@
 type Mods = Record<string, boolean | string>
 
 export const cn = (
-    cls: string, mods: Mods, additional: string[]): string => {
+    cls: string, mods: Mods = {}, additional: string[] = []): string => {
   const clsMods = Object.entries(mods).
       filter(([_, value]) => Boolean(value)).
       map(([cls, _]) => cls);
   return [
     cls,
-    ...additional,
     ...clsMods,
+    ...additional.filter(Boolean),
   ].join(' ');
 };
 
