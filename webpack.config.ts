@@ -8,7 +8,7 @@ import {BuildEnv, BuildPath} from './config/build/types/config';
  Вызов функции в webpack.config.ts
  Вызываем функцию в buildWebPackConfig в ключе plugins
  */
-export default (env: BuildEnv) => {
+export default (env: BuildEnv): webpack.Configuration => {
   
   //Формируем пути с помощью либы path
   /*
@@ -39,13 +39,11 @@ export default (env: BuildEnv) => {
   const isDev = mode === 'development';
   
   //Формируем наш конфиг и возвращаем его
-  const config: webpack.Configuration = buildWebpackConfig({
+  return buildWebpackConfig({
     mode,
     paths,
     isDev,
     port,
   });
-  
-  return config;
 }
 

@@ -1,9 +1,8 @@
+import {AppRouter} from '@/app/providers/router';
 import {useTheme} from '@/app/providers/theme';
-import {AboutPage} from '@/pages/about-page';
-import {MainPage} from '@/pages/main-page';
-import {FC, Suspense} from 'react';
-import {Link, Route, Routes} from 'react-router-dom';
-import {cn} from 'src/shared/lib/classNames';
+import {cn} from '@/shared/lib/classNames/cn';
+import {FC} from 'react';
+import {Link} from 'react-router-dom';
 import './styles/index.scss';
 
 export const App: FC = ({}) => {
@@ -15,12 +14,7 @@ export const App: FC = ({}) => {
         <button onClick={toggleTheme}>theme</button>
         <Link to={'/about'}>about</Link>
         <Link to={'/'}>main</Link>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path={'/about'} element={<AboutPage/>}/>
-            <Route path={'/'} element={<MainPage/>}/>
-          </Routes>
-        </Suspense>
+        <AppRouter/>
       </div>
   );
 };
