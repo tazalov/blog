@@ -7,6 +7,25 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
    * Дорогой читатель, здесь мы собираем loaders
    * Вызываем функцию в buildWebPackConfig в ключе module.rules
    */
+  const babelLoader = {
+    test: /\.(js|mjs|cjs|jsx|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          ['@babel/preset-env', {targets: 'defaults'}],
+        ],
+        plugins: [
+          [
+            'i18next-extract',
+            {
+              locales: ['en', 'ru'],
+              keyAsDefaultValue: true,
+            }]],
+      },
+    },
+  };
   
   const svgLoader = {
     test: /\.svg$/i,
@@ -30,7 +49,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     exclude: /node_modules/,
   };
   
-  //! Лоадер настроен только на scss и sass, CSS файлы не будут работать
+  //* Лоадер настроен только на scss и sass, CSS файлы не будут работать
   const stylesLoaders = {
     test: /\.s[ac]ss$/i,
     use: [
@@ -57,6 +76,6 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     ],
   };
   
-  //! Порядок loaders в массиве важен!
-  return [svgLoader, fileLoader, typescriptLoader, stylesLoaders];
+  //* Порядок loaders в массиве важен!
+  return [svgLoader, fileLoader, babelLoader, typescriptLoader, stylesLoaders];
 }
