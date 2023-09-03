@@ -1,9 +1,9 @@
 import webpack from 'webpack';
-import {buildDevServer} from './buildDevServer';
-import {buildLoaders} from './buildLoaders';
-import {buildPlugins} from './buildPlugins';
-import {buildResolvers} from './buildResolvers';
-import {BuildOptions} from './types/config';
+import { buildDevServer } from './buildDevServer';
+import { buildLoaders } from './buildLoaders';
+import { buildPlugins } from './buildPlugins';
+import { buildResolvers } from './buildResolvers';
+import { BuildOptions } from './types/config';
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
   /*
@@ -11,7 +11,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
    Конфиг принимает обхект options, его мы прокидываем внутри в webpack.config.ts
    Вызываем функцию в webpack.config.ts
    */
-  const {mode,paths, isDev} = options
+  const { mode, paths, isDev } = options;
   return {
     mode,
     entry: paths.entry,
@@ -26,6 +26,6 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
     },
     resolve: buildResolvers(options),
     devtool: isDev ? 'inline-source-map' : undefined,
-    devServer: isDev ? buildDevServer(options) : undefined
+    devServer: isDev ? buildDevServer(options) : undefined,
   };
 }

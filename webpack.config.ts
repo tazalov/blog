@@ -1,16 +1,15 @@
 import path from 'path';
 import webpack from 'webpack';
-import {buildWebpackConfig} from './config/build/buildWebpackConfig';
-import {BuildEnv, BuildPath} from './config/build/types/config';
+import { buildWebpackConfig } from './config/build/buildWebpackConfig';
+import { BuildEnv, BuildPath } from './config/build/types/config';
 
 /*
  Дорогой читатель, здесь мы собираем наш конфиг вебпака
  Вызов функции в webpack.config.ts
  Вызываем функцию в buildWebPackConfig в ключе plugins
  */
-export default (env: BuildEnv): webpack.Configuration => {
-  
-  //Формируем пути с помощью либы path
+export default (env: BuildEnv = { mode: 'development', port: 3000 }): webpack.Configuration => {
+  // Формируем пути с помощью либы path
   /*
   entry - путь - точка входа вебпака
   build - путь - папка, куда будет билдится проект, команда yarn build:prod
@@ -20,10 +19,9 @@ export default (env: BuildEnv): webpack.Configuration => {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     build: path.resolve(__dirname, 'build'),
     html: path.resolve(__dirname, 'public', 'index.html'),
-    src: path.resolve(__dirname, 'src')
+    src: path.resolve(__dirname, 'src'),
   };
-  
-  
+
   /*
    mode - собственно development или production
    */
@@ -37,13 +35,12 @@ export default (env: BuildEnv): webpack.Configuration => {
    из конфига (см. buildWebpackConfig) при production
    */
   const isDev = mode === 'development';
-  
-  //Формируем наш конфиг и возвращаем его
+
+  // Формируем наш конфиг и возвращаем его
   return buildWebpackConfig({
     mode,
     paths,
     isDev,
     port,
   });
-}
-
+};

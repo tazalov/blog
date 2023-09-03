@@ -1,7 +1,7 @@
-//mode
+// mode
 export type BuildMode = 'development' | 'production'
 
-//path
+// path
 export interface BuildPath {
   entry: string;
   build: string;
@@ -15,7 +15,7 @@ export interface BuildPath {
  "start": "webpack serve --env port=3000",
  "build:prod": "webpack --env mode=production",
  "build:dev": "webpack --env mode=development"
- 
+
  Эти переменные по итогу попадут в нашу функцию из webpack.config.ts
 */
 export interface BuildEnv {
@@ -23,11 +23,10 @@ export interface BuildEnv {
   port: number
 }
 
-//options (тип для аргументов функций с loaders, plugins, ...)
+// options (тип для аргументов функций с loaders, plugins, ...)
 export interface BuildOptions {
   mode: BuildMode;
   paths: BuildPath;
   isDev: boolean;
   port: number;
 }
-

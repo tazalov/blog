@@ -1,12 +1,13 @@
-import {AboutPage} from '@/pages/about-page';
+import { RouteProps } from 'react-router-dom';
+import { AboutPage } from '@/pages/about-page';
 import MainPage from '@/pages/main-page/ui/MainPage';
-import {RouteProps} from 'react-router-dom';
 
 /*
 ? Порядок действий:
-? сначала добавляешь в enum название странички: 'users', 'profile', 'dialogs' ...
+? сначала добавляешь в enum название странички: 'profile', 'dialogs' ...
 ? далее добавляешь в RoutePath по ключу из enum - URL, который ты хочешь видеть
-? далее в routeConfig добавляешь по аналогии с RoutePath, но дополнительно указываешь свой JSX Element
+? далее в routeConfig добавляешь по аналогии с RoutePath,
+? но дополнительно указываешь свой JSX Element
 */
 
 /*
@@ -25,7 +26,7 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.ABOUT]: '/about',
-}
+};
 
 /*
 * Здесь у нас типо свой createBrowserRouter,
@@ -36,12 +37,12 @@ export const RoutePath: Record<AppRoutes, string> = {
 export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.MAIN]: {
     path: RoutePath.main,
-    element: <MainPage/>
+    element: <MainPage />,
   },
   [AppRoutes.ABOUT]: {
     path: RoutePath.about,
-    element: <AboutPage/>
-  }
-}
+    element: <AboutPage />,
+  },
+};
 
-//? Как все сделаешь, иди в app/providers/router/ui/AppRouter.jsx и там добавляй страничку
+// ? Как все сделаешь, иди в app/providers/router/ui/AppRouter.jsx и там добавляй страничку
