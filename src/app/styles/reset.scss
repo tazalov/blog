@@ -5,18 +5,13 @@
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 :focus,
 :active {
-  outline: none;
-}
-
-a:focus,
-a:active {
   outline: none;
 }
 
@@ -43,11 +38,17 @@ a:visited {
   text-decoration: none;
 }
 
+a:focus,
+a:active {
+  outline: none;
+}
+
 a:hover {
   text-decoration: none;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
 }
 

@@ -4,7 +4,6 @@ import { cn } from '@/shared/lib/classNames/cn';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import Dark from '@/widgets/themeSwitcher/assets/icons/theme-dark.svg';
 import Light from '@/widgets/themeSwitcher/assets/icons/theme-light.svg';
-import s from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherPT {
   className?: string;
@@ -18,7 +17,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherPT> = ({ className }) => {
   return (
     <Button
       theme={ButtonTheme.CLEAR}
-      className={cn(s.ThemeSwitcher, {}, [className])}
+      className={cn('', {}, [className])}
       onClick={toggleTheme}
     >
       {theme === Theme.LIGHT ? <Light />

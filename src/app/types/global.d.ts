@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Добавляем поддержку scss модулей для typescript
 declare module '*.scss' {
   interface IClassNames {
@@ -11,6 +9,8 @@ declare module '*.scss' {
 }
 // Добавляем поддержку импорта svg для typescript
 declare module '*.svg' {
+  import React from 'react';
+
   const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   export default content;
 }

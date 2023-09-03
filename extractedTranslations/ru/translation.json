@@ -1,5 +1,15 @@
 {
   "About page": "About page",
   "Language": "Language",
-  "Main page": "Main page"
+  "Loading": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
+  "Main page": "Main page",
+  "about": "about",
+  "main": "main",
+  "toggle": "toggle"
 }
