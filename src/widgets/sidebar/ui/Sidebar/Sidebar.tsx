@@ -1,4 +1,5 @@
 import {cn} from '@/shared/lib/classNames/cn';
+import {LangSwitcher} from '@/widgets/langSwitcher';
 import {ThemeSwitcher} from '@/widgets/themeSwitcher';
 import {FC, useState} from 'react';
 import s from './Sidebar.module.scss';
@@ -17,7 +18,7 @@ export const Sidebar: FC<SidebarPT> = ({className}) => {
       <button onClick={toggleCollapsed}>toggle</button>
         <div className={s.switchers}>
           <ThemeSwitcher/>
-          {/* TODO : language switcher */}
+          <LangSwitcher className={s.lang}/>
         </div>
       </div>
   );
