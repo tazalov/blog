@@ -13,8 +13,20 @@ export const Navbar: FC<NavbarPT> = ({ className }) => {
   return (
     <div className={cn(s.Navbar, {}, [className])}>
       <div className={s.links}>
-        <AppLink theme={AppLinkTheme.SECONDARY} to="/about" className={s.mainLink}>{t('about')}</AppLink>
-        <AppLink theme={AppLinkTheme.SECONDARY} to="/" className={s.mainLink}>{t('main')}</AppLink>
+        <AppLink
+          theme={AppLinkTheme.SECONDARY}
+          to="/about"
+          className={s.mainLink}
+        >
+          {t('About')}
+        </AppLink>
+        <AppLink
+          theme={AppLinkTheme.SECONDARY}
+          to="/"
+          className={s.mainLink}
+        >
+          {t('Main')}
+        </AppLink>
       </div>
     </div>
   );

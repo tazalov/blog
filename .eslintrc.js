@@ -47,6 +47,7 @@ module.exports = {
     'import/extensions': 'off',
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',
+    'react/self-closing-comp': 'off',
     'i18next/no-literal-string': ['error', { markupOnly: true }],
     'max-len': [2, { ignoreComments: true }],
   },

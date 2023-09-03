@@ -1,4 +1,7 @@
 {
   "Language" : "ENG",
-  "toggle" : "toggle"
+  "Toggle" : "Toggle",
+  "Page not found": "Page not found",
+  "Main" : "Main",
+  "About": "About"
 }

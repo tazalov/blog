@@ -1,6 +1,7 @@
 import { RouteProps } from 'react-router-dom';
 import { AboutPage } from '@/pages/about-page';
-import MainPage from '@/pages/main-page/ui/MainPage';
+import { MainPage } from '@/pages/main-page';
+import { NotFound } from '@/pages/not-found';
 
 /*
 ? Порядок действий:
@@ -12,10 +13,12 @@ import MainPage from '@/pages/main-page/ui/MainPage';
 
 /*
  * Смотри, тут мы задаем в enum ключи для наших роутов объекта RoutePath
+ ! NOT_FOUND должен быть всегда последним!
  */
 export enum AppRoutes {
   MAIN = 'main',
-  ABOUT = 'about'
+  ABOUT = 'about',
+  NOT_FOUND = 'not_found'
 }
 
 /*
@@ -26,6 +29,7 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.ABOUT]: '/about',
+  [AppRoutes.NOT_FOUND]: '*',
 };
 
 /*
@@ -42,6 +46,10 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.ABOUT]: {
     path: RoutePath.about,
     element: <AboutPage />,
+  },
+  [AppRoutes.NOT_FOUND]: {
+    path: RoutePath.not_found,
+    element: <NotFound />,
   },
 };
 

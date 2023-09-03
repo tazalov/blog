@@ -1,4 +1,5 @@
 {
+  "About": "About",
   "About page": "About page",
   "Language": "Language",
   "Loading": {
@@ -8,7 +9,10 @@
       }
     }
   },
+  "Main": "Main",
   "Main page": "Main page",
+  "Page not found": "Page not found",
+  "Toggle": "Toggle",
   "about": "about",
   "main": "main",
   "toggle": "toggle"
