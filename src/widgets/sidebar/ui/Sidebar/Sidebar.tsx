@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { LangSwitcher } from 'src/widgets/lang-switcher';
+import { ThemeSwitcher } from 'src/widgets/theme-switcher';
 import { cn } from '@/shared/lib/classNames/cn';
-import { LangSwitcher } from '@/widgets/langSwitcher';
-import { ThemeSwitcher } from '@/widgets/themeSwitcher';
 import s from './Sidebar.module.scss';
 
 interface SidebarPT {
