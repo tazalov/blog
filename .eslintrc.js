@@ -48,10 +48,20 @@ module.exports = {
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',
     'react/self-closing-comp': 'off',
-    'i18next/no-literal-string': ['error', { markupOnly: true }],
+    'i18next/no-literal-string': [
+      'error',
+      { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] },
+    ],
     'max-len': [2, { ignoreComments: true, code: 100 }],
   },
   globals: {
     __IS_DEV__: true,
   },
+  // ? Тутова переопределяем правила eslint для файлов, который подходят под регулярку
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: { 'i18next/no-literal-string': 'off' },
+    },
+  ],
 };

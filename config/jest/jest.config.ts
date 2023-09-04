@@ -30,11 +30,21 @@ export default {
   moduleDirectories: [
     'node_modules',
   ],
+  // Порядок важен, я в ахуе
+  moduleNameMapper: {
+    // ? Мокаем все импорты для .svg
+    '\\.svg$': '<rootDir>/config/jest/jest-empty-component.tsx',
+    // ? Добавляем поддержку scss для тестов
+    '\\.(s?css)$': 'identity-obj-proxy',
+    // ? Добавляем поддержку аллиасов для тестов
+    '^@/(.+)': '<rootDir>/src/$1',
+  },
   testMatch: [
     // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
   ],
   rootDir: '../../',
+  setupFilesAfterEnv: ['<rootDir>/config/jest/jest-setup.ts'],
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
 
