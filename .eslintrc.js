@@ -49,7 +49,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'react/self-closing-comp': 'off',
     'i18next/no-literal-string': ['error', { markupOnly: true }],
-    'max-len': [2, { ignoreComments: true }],
+    'max-len': [2, { ignoreComments: true, code: 100 }],
   },
   globals: {
     __IS_DEV__: true,
