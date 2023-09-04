@@ -3,5 +3,7 @@
   "Toggle" : "Переключить",
   "Page not found": "Страница не найдена",
   "Main" : "Главная",
-  "About": "О нас"
+  "About": "О нас",
+  "Unexpected error has occurred": "Произошла непредвиденная ошибка",
+  "Refresh page": "Перезагрузить страницу"
 }

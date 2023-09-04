@@ -1,7 +1,7 @@
 import { RouteProps } from 'react-router-dom';
-import { NotFound } from 'src/pages/not-found-page';
 import { AboutPage } from '@/pages/about-page';
 import { MainPage } from '@/pages/main-page';
+import { NotFound } from '@/pages/not-found-page';
 
 /*
 ? Порядок действий:
