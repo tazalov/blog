@@ -18,7 +18,7 @@
       "@/*": ["src/*"] // Алиас для пути @
     },
     // esModuleInterop позволяет работать с пакетами, которые используют
-    // common js как с обычными пакета с помощью import (require() module.export) = common js
+    // common js как с обычными пакетами с помощью import (require() module.export) = common js
     // import Moment from 'moment';
     // без флага esModuleInterop результат undefined
     // console.log(Moment);
@@ -38,6 +38,10 @@
       "module": "CommonJS"
     }
   },
+  // Очень важная штука, если не указывать явно, то данный конфиг
+  // распространяется на все файлы, но если мы что то внесли
+  // как, например, наш файлик для настройки jest,
+  // то нужно и явно указать какие файлы должны работать под этим конфигом
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

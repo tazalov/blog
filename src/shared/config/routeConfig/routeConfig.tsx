@@ -53,4 +53,5 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   },
 };
 
-// ? Как все сделаешь, иди в app/providers/router/ui/AppRouter.jsx и там добавляй страничку
+// ? Как все сделаешь, твой путь будет доступен, нужно будет только написать компонент NavLink или Link
+//* В app/providers/router/ui/AppRouter.jsx все автоматом подтянется

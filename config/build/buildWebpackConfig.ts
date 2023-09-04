@@ -5,12 +5,13 @@ import { buildPlugins } from './buildPlugins';
 import { buildResolvers } from './buildResolvers';
 import { BuildOptions } from './types/config';
 
+/*
+* Создаем наш конфиг вебпака
+* Конфиг принимает обхект options, его мы прокидываем внутри в webpack.config.ts
+* Вызываем функцию в webpack.config.ts
+*/
+
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-  /*
-   Дорогой читатель, здесь мы создаем наш конфиг вебпака
-   Конфиг принимает обхект options, его мы прокидываем внутри в webpack.config.ts
-   Вызываем функцию в webpack.config.ts
-   */
   const { mode, paths, isDev } = options;
   return {
     mode,

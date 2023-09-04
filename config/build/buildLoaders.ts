@@ -2,11 +2,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 
+//* Тутова мы собираем loaders и вызываем функцию в buildWebPackConfig.ts в ключе module.rules
+
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
-  /*
-   * Дорогой читатель, здесь мы собираем loaders
-   * Вызываем функцию в buildWebPackConfig в ключе module.rules
-   */
   const babelLoader = {
     test: /\.(js|mjs|cjs|jsx|tsx)$/,
     exclude: /node_modules/,
@@ -53,11 +51,9 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
   const stylesLoaders = {
     test: /\.s[ac]ss$/i,
     use: [
-      //! MiniCssExtractPlugin нужен для того, чтобы наши стили попадали
-      //! в отдельный css файл, а не оставались в js файле
+      //! MiniCssExtractPlugin нужен для того, чтобы наши стили попадали в отдельный css файл, а не оставались в js файле
       //* нужен только в production
       options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-      // Translates CSS into CommonJS
       {
         loader: 'css-loader',
         options: {
@@ -73,7 +69,6 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
           },
         },
       },
-      // Compiles Sass to CSS
       'sass-loader',
     ],
   };

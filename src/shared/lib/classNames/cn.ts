@@ -7,7 +7,7 @@
  * отвечают за позиционирование компонента)
  * */
 
-// ? Пример cn('app', {hovered: true, active: true}, ['secondary', 'error'])
+// ? Пример cn('app', {hovered: true, active: false}, ['secondary', 'error']) - "app hovered secondary error"
 
 //! Record - generic, указывает на то, что в mods у нас будет объект с
 //! ключом string, а значение может быть boolean | string

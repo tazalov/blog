@@ -5,26 +5,22 @@ import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
+//* Пакуем основные плагины, которые нужны для разработки и вызываем функцию в buildWebPackConfig.ts в ключе plugins
+
+/*
+ ? ProgressPlugin - показывать процент прогресса при билде, сборке
+ * HtmlWebpackPlugin - нужен, чтобы вебпак в билдовый index.html подключил наш bundle.js
+ ? DefinePlugin - прокидываем переменные или данные из вебпака в наш проект, здесь нам нужен isDev для i18next
+
+ ! Плагины ниже работают только в dev режиме (флаг isDev)
+ * HotModuleReplacementPlugin - позволяет менять данные в приложении или стили без перезагрузки проекта (страницы)
+ ? ReactRefreshPlugin  - предыдущий плагин плохо работает с реакт-компонентами, поэтому в довесок ставим и эту хрень
+*/
+
 export function buildPlugins({
   paths,
   isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-  /*
-   * Дорогой читатель, здесь мы собираем основные плагины, которые нужны для разработки
-   * Вызываем функцию в buildWebPackConfig в ключе plugins
-   */
-
-  /*
-   * ProgressPlugin - показывать процент прогресса при билде
-   * HtmlWebpackPlugin - нужен, чтобы вебпак в билдовый index.html подключил наш бандл
-   * DefinePlugin - прокидываем переменные или данные из вебпака в наш проект,
-   * здесь нам нужен isDev для i18next
-   * HotModuleReplacementPlugin - позволяет менять данные в приложении
-   *  или стили без перезагрузки проекта (страницы)
-   * ReactRefreshPlugin  - предыдущий плагин плохо работает с реакт-компонентами,
-   *  поэтому в довесок ставим и эту хрень
-   * */
-
   const plugins = [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin(
