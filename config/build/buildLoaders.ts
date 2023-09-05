@@ -1,6 +1,7 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import { BuildOptions } from './types/config';
+import { buildStyleLoader } from './loaders/buildStyleLoader';
+import { buildSVGLoader } from './loaders/buildSVGLoader';
 
 //* Тутова мы собираем loaders и вызываем функцию в buildWebPackConfig.ts в ключе module.rules
 
@@ -25,11 +26,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     },
   };
 
-  const svgLoader = {
-    test: /\.svg$/i,
-    issuer: /\.[jt]sx?$/,
-    use: ['@svgr/webpack'],
-  };
+  const svgLoader = buildSVGLoader();
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif)$/i,
@@ -48,30 +45,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
   };
 
   //* Лоадер настроен только на scss и sass, CSS файлы не будут работать
-  const stylesLoaders = {
-    test: /\.s[ac]ss$/i,
-    use: [
-      //! MiniCssExtractPlugin нужен для того, чтобы наши стили попадали в отдельный css файл, а не оставались в js файле
-      //* нужен только в production
-      options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-      {
-        loader: 'css-loader',
-        options: {
-          modules: {
-            //* Генерируем сложные названия классов только для файлов модульных стилей
-            auto: ((resourcePath: string) => Boolean(
-              resourcePath.includes('.module'),
-            )),
-            //* Включаем эту генерацию только в production, в development
-            localIdentName: options.isDev
-              ? '[path][name]__[local]--[hash:base64:5]'
-              : '[hash:base64:8]',
-          },
-        },
-      },
-      'sass-loader',
-    ],
-  };
+  const stylesLoaders = buildStyleLoader(options.isDev);
 
   //* Порядок loaders в массиве важен!
   return [svgLoader, fileLoader, babelLoader, typescriptLoader, stylesLoaders];
