@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Navbar } from './Navbar';
+import { Loader } from './Loader';
 
 const meta = {
-  title: 'widgets/Navbar',
-  component: Navbar,
+  title: 'shared/Loader',
+  component: Loader,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -16,7 +16,7 @@ const meta = {
     },
   },
 
-} satisfies Meta<typeof Navbar>;
+} satisfies Meta<typeof Loader>;
 
 export default meta;
 

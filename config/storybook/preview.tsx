@@ -1,7 +1,6 @@
 import type { Preview } from '@storybook/react';
 import '@/app/styles/index.scss';
-import '@/app/styles/storybook/decorator.scss';
-// @ts-ignore
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, useTheme } from '@/app/providers/theme';
 
 /* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */
@@ -25,16 +24,18 @@ const preview: Preview = {
       const storybookTheme = context.globals.theme || theme;
 
       return (
-        <div className={`app ${storybookTheme} decorator-wrapper`}>
+        <div className={`app ${storybookTheme}`} style={{ minHeight: 0, padding: '20px' }}>
           <Story />
         </div>
       );
     };
 
     return (
-      <ThemeProvider>
-        <ThemedStory />
-      </ThemeProvider>
+      <BrowserRouter>
+        <ThemeProvider>
+          <ThemedStory />
+        </ThemeProvider>
+      </BrowserRouter>
     );
   }],
 };

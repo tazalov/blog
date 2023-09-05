@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Navbar } from './Navbar';
+import { PageError } from './PageError';
 
 const meta = {
-  title: 'widgets/Navbar',
-  component: Navbar,
+  title: 'widgets/PageError',
+  component: PageError,
   parameters: {
     layout: 'fullscreen',
   },
@@ -16,7 +16,7 @@ const meta = {
     },
   },
 
-} satisfies Meta<typeof Navbar>;
+} satisfies Meta<typeof PageError>;
 
 export default meta;
 
