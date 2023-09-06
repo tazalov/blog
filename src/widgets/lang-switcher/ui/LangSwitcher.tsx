@@ -23,7 +23,7 @@ export const LangSwitcher: FC<LangSwitcherPT> = ({ className }) => {
       className={cn('', {}, [className])}
       onClick={toggleLanguage}
     >
-      {t('Language')}
+      {t('Lang')}
     </Button>
   );
 };
