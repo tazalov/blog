@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { Theme, useTheme } from '@/app/providers/theme';
 import { cn } from '@/shared/lib/classNames/cn';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
-import Dark from '@/widgets/theme-switcher/assets/icons/theme-dark.svg';
-import Light from '@/widgets/theme-switcher/assets/icons/theme-light.svg';
+import Dark from '@/shared/assets/icons/theme-dark.svg';
+import Light from '@/shared/assets/icons/theme-light.svg';
 
 interface ThemeSwitcherPT {
   className?: string;

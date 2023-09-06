@@ -6,25 +6,42 @@ export enum ButtonTheme {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   OUTLINE = 'outline',
-  CLEAR = 'clear'
+  CLEAR = 'clear',
+  BACKGROUND = 'background',
+  BACKGROUND_INVERTED = 'backgroundInverted',
+}
+
+export enum ButtonSize {
+  M = 'size_m',
+  L = 'size_l',
+  XL = 'size_xl'
 }
 
 interface ButtonPT extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ButtonTheme;
+  square?: boolean;
+  size?: ButtonSize
 }
 
 export const Button: FC<ButtonPT> = ({
-  className,
-  theme,
+  className = '',
+  theme = ButtonTheme.PRIMARY,
   children,
+  square = false,
+  size = ButtonSize.L,
   ...restProps
-}) => (
-  <button
-    type="button"
-    className={cn(s.Button, {}, [className, s[theme]])}
-    {...restProps}
-  >
-    {children}
-  </button>
-);
+}) => {
+  const mods = {
+    [s.square]: square,
+  };
+  return (
+    <button
+      type="button"
+      className={cn(s.Button, mods, [className, s[theme], s[size]])}
+      {...restProps}
+    >
+      {children}
+    </button>
+  );
+};
