@@ -17,6 +17,7 @@
     "test:ui:json": "node scripts/generate-visual-json-report.ts",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:fullreport": "yarn test:ui:json && yarn test:ui:html",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook"
   },
