@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import AboutPage from './AboutPage';
+import {
+  PagesDecorator,
+} from '@/shared/config/storybook/stories-decorators/PagesDecorator/PagesDecorator';
 
 const meta = {
   title: 'pages/AboutPage',
@@ -7,7 +10,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  tags: ['autodocs'],
+  decorators: [PagesDecorator],
 } satisfies Meta<typeof AboutPage>;
 
 export default meta;

@@ -1,16 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { AppLink, AppLinkTheme } from './AppLink';
+import {
+  SharedDecorator,
+} from '@/shared/config/storybook/stories-decorators/SharedDecorator/SharedDecorator';
 
 const meta = {
   title: 'shared/AppLink',
   component: AppLink,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
   args: {
     to: '/',
   },
+  parameters: {
+    layout: 'fullscreen',
+  },
+  decorators: [SharedDecorator],
   argTypes: {
     children: {
       description: 'Label text link or other React-component.',

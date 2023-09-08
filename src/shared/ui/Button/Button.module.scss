@@ -20,11 +20,20 @@
   color: var(--primary-color);
 }
 
-.clear {
+.clear,
+.clearInverted {
   padding: 0;
   border: 0;
   outline: 0;
   background: none;
+}
+
+.clear {
+  color: var(--primary-color);
+}
+
+.clearInverted {
+  color: var(--inverted-primary-color);
 }
 
 .square {

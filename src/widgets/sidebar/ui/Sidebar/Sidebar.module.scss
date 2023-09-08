@@ -4,6 +4,7 @@
   background: var(--inverted-bg-color);
   position: relative;
   transition: width 0.4s ease;
+  padding: 20px 0 0 0
 }
 
 .switchers {
@@ -17,7 +18,6 @@
 }
 
 .items {
-  margin-top: 20px;
   margin-left: 30px;
   display: flex;
   flex-direction: column;

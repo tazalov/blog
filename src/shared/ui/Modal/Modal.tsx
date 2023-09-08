@@ -42,7 +42,7 @@ export const Modal: FC<ModalPT> = ({
     [s.opened]: isOpen,
   };
   return (
-    <Portal>
+    <Portal element={document.getElementById('storybook-root') || undefined}>
       <div className={cn(s.Modal, mods, [className])}>
         <div className={s.overlay} onClick={handleClickClose}>
           <div className={s.content} onClick={handleClickContent}>

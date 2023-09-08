@@ -1,13 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonTheme, ButtonSize } from './Button';
+import {
+  SharedDecorator,
+} from '@/shared/config/storybook/stories-decorators/SharedDecorator/SharedDecorator';
 
 const meta = {
   title: 'shared/Button',
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
-  tags: ['autodocs'],
+  decorators: [SharedDecorator],
   argTypes: {
     children: {
       description: 'Label text button or other React-component.',
@@ -62,8 +65,15 @@ export const Outline: Story = {
 
 export const Clear: Story = {
   args: {
-    children: 'Clear',
+    children: 'I have main color',
     theme: ButtonTheme.CLEAR,
+  },
+};
+
+export const InvertedClear: Story = {
+  args: {
+    children: 'I have inverted color',
+    theme: ButtonTheme.CLEAR_INDERTED,
   },
 };
 

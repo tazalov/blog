@@ -7,7 +7,6 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  tags: ['autodocs'],
   argTypes: {
     className: {
       description: 'The class that is passed from the parent component is used for positioning.',
