@@ -8,8 +8,10 @@ import {
 import {
   ThemeDecorator,
 } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import {
+  StoreDecorator,
+} from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
-/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */
 const preview: Preview = {
   parameters: {
     controls: { expanded: true },
@@ -17,16 +19,17 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       description: 'Global theme for components',
-      defaultValue: 'light',
+      defaultValue: 'app_light_theme',
       toolbar: {
         title: 'THEME',
         icon: 'circlehollow',
-        items: ['light', 'dark'],
+        items: ['app_light_theme', 'app_dark_theme'],
         dynamicTitle: true,
       },
     },
   },
   decorators: [
+    StoreDecorator,
     RouterDecorator,
     ThemeDecorator,
     StyleDecorator,
@@ -34,28 +37,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
-/*
-*
-*
-* (Story, context) => {
- const ThemedStory = () => {
- const { theme } = useTheme();
- const storybookTheme = context.globals.theme || theme;
-
- return (
- <div className={`app ${storybookTheme}`} style={{ minHeight: 0, padding: '20px' }}>
- <Story />
- </div>
- );
- };
-
- return (
- <BrowserRouter>
- <ThemeProvider>
- <ThemedStory />
- </ThemeProvider>
- </BrowserRouter>
- );
- }
-* */

@@ -10,7 +10,7 @@ interface StoreProviderPT {
 }
 
 export const StoreProvider: FC<StoreProviderPT> = ({ children, initialState }) => {
-  const store = createReduxStore(initialState as StateSchema);
+  const store = createReduxStore(initialState as StateSchema, __IS_DEV__);
   return (
     <Provider store={store}>
       {children}

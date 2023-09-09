@@ -1,12 +1,17 @@
 import { StoryFn, StoryContext } from '@storybook/react';
-import { ThemeProvider, useTheme } from '@/app/providers/theme';
+import { useEffect } from 'react';
+import { ThemeProvider } from '@/app/providers/theme';
 
 export const ThemeDecorator = (StoryComponent: StoryFn, context: StoryContext) => {
-  const { theme } = useTheme();
   const { globals } = context;
+
+  useEffect(() => {
+    document.body.className = globals.theme;
+  }, [globals.theme]);
+
   return (
     <ThemeProvider>
-      <div className={`app ${(globals.theme || theme)}`}>
+      <div className="app">
         <StoryComponent />
       </div>
     </ThemeProvider>

@@ -1,4 +1,6 @@
-import { FC, useMemo, useState } from 'react';
+import {
+  FC, useMemo, useState, useEffect,
+} from 'react';
 import {
   LOCAL_STORAGE_THEME_KEY,
   Theme,
@@ -9,6 +11,10 @@ const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || T
 
 export const ThemeProvider: FC = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   //! Объект будет новый при каждом рендере, поэтому мы херячим useMemo
   const defaultProps = useMemo(() => ({ theme, setTheme }), [theme]);
