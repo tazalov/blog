@@ -6,15 +6,18 @@ import { ErrorBoundary } from '@/app/providers/error-boundary';
 import { ThemeProvider } from '@/app/providers/theme';
 import '@/shared/config/i18n/i18n';
 import '@/app/styles/index.scss';
+import { StoreProvider } from './app/providers/store';
 
 const Root: FC = () => (
-  <BrowserRouter>
-    <ThemeProvider>
-      <ErrorBoundary>
-        <App />
-      </ErrorBoundary>
-    </ThemeProvider>
-  </BrowserRouter>
+  <StoreProvider>
+    <BrowserRouter>
+      <ThemeProvider>
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      </ThemeProvider>
+    </BrowserRouter>
+  </StoreProvider>
 );
 
 render(<Root />, document.getElementById('root'));

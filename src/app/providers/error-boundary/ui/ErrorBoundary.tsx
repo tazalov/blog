@@ -1,10 +1,10 @@
 import {
-  Component, ErrorInfo, ReactElement, Suspense,
+  Component, ErrorInfo, Suspense, ReactNode,
 } from 'react';
 import { PageError } from '@/widgets/page-error';
 
 interface ErrorBoundaryProps {
-  children: ReactElement;
+  children: ReactNode;
 }
 
 interface ErrorBoundaryState {
