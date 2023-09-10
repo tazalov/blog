@@ -1,5 +1,10 @@
 import {
-  FC, ReactNode, MouseEvent, useEffect, useCallback,
+  FC,
+  ReactNode,
+  MouseEvent,
+  useEffect,
+  useCallback,
+  useState,
 } from 'react';
 import { cn } from '@/shared/lib/classNames/cn';
 import s from './Modal.module.scss';
@@ -10,21 +15,26 @@ interface ModalPT {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
 export const Modal: FC<ModalPT> = ({
-  className, children, isOpen, onClose,
+  className, children, isOpen, onClose, lazy,
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) setIsMounted(true);
+  }, [isOpen]);
+
   const handleClickContent = (e: MouseEvent) => {
     e.stopPropagation();
   };
-
   const handleClickClose = useCallback(() => {
     if (onClose) {
       onClose();
     }
   }, [onClose]);
-
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       handleClickClose();
@@ -41,6 +51,11 @@ export const Modal: FC<ModalPT> = ({
   const mods = {
     [s.opened]: isOpen,
   };
+
+  if (lazy && !isMounted) {
+    return null;
+  }
+
   return (
     <Portal element={document.getElementById('storybook-root') || undefined}>
       <div className={cn(s.Modal, mods, [className])}>

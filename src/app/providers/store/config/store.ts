@@ -1,6 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/store/config/StateSchema';
 import { counterReducer } from '@/entities/counter';
+import { userReducer } from '@/entities/user';
 
 /*
  * Шлем нахер доку тулкита с ее ReturnType для получения типа стейта
@@ -14,14 +15,19 @@ import { counterReducer } from '@/entities/counter';
  ? чтобы создавать стейт внутри тестов.
  */
 
-const createReduxStore = (initialState?: StateSchema, isDev = false) => configureStore<StateSchema>(
-  {
-    reducer: {
-      counter: counterReducer,
+const createReduxStore = (initialState?: StateSchema, isDev = false) => {
+  const rootReducer: ReducersMapObject<StateSchema> = {
+    counter: counterReducer,
+    user: userReducer,
+  };
+
+  return configureStore<StateSchema>(
+    {
+      reducer: rootReducer,
+      devTools: isDev,
+      preloadedState: initialState,
     },
-    devTools: isDev,
-    preloadedState: initialState,
-  },
-);
+  );
+};
 
 export { createReduxStore };
