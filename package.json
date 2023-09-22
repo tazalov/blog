@@ -20,7 +20,8 @@
     "test:ui:fullreport": "yarn test:ui:json && yarn test:ui:html",
     "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
-    "storybook:build": "storybook build -c ./config/storybook"
+    "storybook:build": "storybook build -c ./config/storybook",
+    "prepare": "husky install"
   },
   "resolutions": {
     "@types/react": "17.0.2",
