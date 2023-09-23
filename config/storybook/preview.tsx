@@ -11,6 +11,9 @@ import {
 import {
   StoreDecorator,
 } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import {
+  TranslationDecorator,
+} from '@/shared/config/storybook/TranslationDecorator/TranslationDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -23,14 +26,33 @@ const preview: Preview = {
       toolbar: {
         title: 'THEME',
         icon: 'circlehollow',
-        items: ['app_light_theme', 'app_dark_theme'],
+        items: [
+          { value: 'app_light_theme', title: 'Light' },
+          { value: 'app_dark_theme', title: 'Dark' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+    locale: {
+      description: 'Internationalization locale',
+      defaultValue: 'en',
+      toolbar: {
+        title: 'LANG',
+        icon: 'globe',
+        items: [
+          { value: 'en', title: 'English' },
+          { value: 'ru', title: 'Русский' },
+        ],
         dynamicTitle: true,
       },
     },
   },
   decorators: [
-    StoreDecorator,
+    StoreDecorator({
+      loginForm: { username: 'asd', password: 'asd' },
+    }),
     RouterDecorator,
+    TranslationDecorator,
     ThemeDecorator,
     StyleDecorator,
   ],

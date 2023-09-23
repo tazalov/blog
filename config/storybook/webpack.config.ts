@@ -4,7 +4,7 @@
  * но нам оно ни к чему, здесь мы пилим свой!
  */
 
-import webpack, { RuleSetRule } from 'webpack';
+import webpack, { DefinePlugin, RuleSetRule } from 'webpack';
 import path from 'path';
 import { BuildPath } from '../build/types/config';
 import { buildStyleLoader } from '../build/loaders/buildStyleLoader';
@@ -28,6 +28,9 @@ export default ({ config } : {config: webpack.Configuration}) => {
     return rule;
   });
   config.module.rules.push(buildSVGLoader());
+  config.plugins.push(new DefinePlugin({
+    __IS_DEV__: true,
+  }));
   // eslint-disable-next-line no-param-reassign
   config.resolve.alias = { '@': paths.src };
   return config;
