@@ -19,10 +19,11 @@ export enum ButtonSize {
 }
 
 interface ButtonPT extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  theme?: ButtonTheme;
-  square?: boolean;
+  className?: string
+  theme?: ButtonTheme
+  square?: boolean
   size?: ButtonSize
+  disabled?: boolean
 }
 
 export const Button: FC<ButtonPT> = ({
@@ -31,15 +32,18 @@ export const Button: FC<ButtonPT> = ({
   children,
   square = false,
   size = ButtonSize.L,
+  disabled = false,
   ...restProps
 }) => {
   const mods = {
     [s.square]: square,
+    [s.disabled]: disabled,
   };
   return (
     <button
       type="button"
       className={cn(s.Button, mods, [className, s[theme], s[size]])}
+      disabled={disabled}
       {...restProps}
     >
       {children}

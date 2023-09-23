@@ -11,9 +11,11 @@ import {
 import {
   StoreDecorator,
 } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import {
+// ? Не работают loki тесты с этим декоратором, если захочешь потом, чтобы он был в сторибуке
+// ? отключи ui тесты и локально и в ci
+/* import {
   TranslationDecorator,
-} from '@/shared/config/storybook/TranslationDecorator/TranslationDecorator';
+} from '@/shared/config/storybook/TranslationDecorator/TranslationDecorator'; */
 
 const preview: Preview = {
   parameters: {
@@ -33,7 +35,7 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
-    locale: {
+    /*    locale: {
       description: 'Internationalization locale',
       defaultValue: 'en',
       toolbar: {
@@ -45,14 +47,14 @@ const preview: Preview = {
         ],
         dynamicTitle: true,
       },
-    },
+    }, */
   },
   decorators: [
     StoreDecorator({
       loginForm: { username: 'asd', password: 'asd' },
     }),
     RouterDecorator,
-    TranslationDecorator,
+    /*    TranslationDecorator, */
     ThemeDecorator,
     StyleDecorator,
   ],

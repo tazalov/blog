@@ -8,5 +8,8 @@
   "Refresh page": "Перезагрузить страницу",
   "Login": "Войти",
   "enter username": "введите имя",
-  "enter password": "введите пароль"
+  "enter password": "введите пароль",
+  "Authorization": "Авторизация",
+  "Invalid username or password": "Неверное имя пользователя или пароль",
+  "Logout": "Выйти"
 }

@@ -34,6 +34,10 @@ const meta = {
       description: 'Makes the button square. There are 3 sizes available.',
       control: false,
     },
+    disabled: {
+      description: 'Changes opacity style to 0.5',
+      control: 'boolean',
+    },
   },
 
 } satisfies Meta<typeof Button>;
