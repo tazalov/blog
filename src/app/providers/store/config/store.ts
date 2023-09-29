@@ -18,8 +18,13 @@ import {
  ? чтобы создавать стейт внутри тестов.
  */
 
-const createReduxStore = (initialState?: StateSchema, isDev = false) => {
+const createReduxStore = (
+  initialState?: StateSchema,
+  asyncReducers?: ReducersMapObject,
+  isDev = false,
+) => {
   const rootReducer: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
   };
