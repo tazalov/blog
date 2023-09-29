@@ -2,7 +2,9 @@ import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/store/config/StateSchema';
 import { counterReducer } from '@/entities/counter';
 import { userReducer } from '@/entities/user';
-import { loginReducer } from '@/features/auth-by-username';
+import {
+  createReducerManager,
+} from '@/app/providers/store/config/reducerManager';
 
 /*
  * Шлем нахер доку тулкита с ее ReturnType для получения типа стейта
@@ -20,16 +22,24 @@ const createReduxStore = (initialState?: StateSchema, isDev = false) => {
   const rootReducer: ReducersMapObject<StateSchema> = {
     counter: counterReducer,
     user: userReducer,
-    loginForm: loginReducer,
   };
 
-  return configureStore<StateSchema>(
+  //* Создали нашего красавчика и передали в него синхронные редюсеры
+  const reducerManager = createReducerManager(rootReducer);
+
+  const store = configureStore<StateSchema>(
     {
-      reducer: rootReducer,
+      reducer: reducerManager.reduce,
       devTools: isDev,
       preloadedState: initialState,
     },
   );
+
+  // TODO пофиксить, тутова мы создали новое поле в store, далее тебе за примером в LoginForm.tsx
+  // @ts-ignore
+  store.reducerManager = reducerManager;
+
+  return store;
 };
 
 export { createReduxStore };

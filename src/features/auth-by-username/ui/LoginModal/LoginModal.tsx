@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 import { cn } from '@/shared/lib/classNames/cn';
 import s from './LoginModal.module.scss';
 import { Modal } from '@/shared/ui/Modal/Modal';
-import { LoginForm } from '../LoginForm/LoginForm';
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { LoginFormLazy } from '../LoginForm/index.lazy';
 
 interface LoginModalPT {
   className?: string;
@@ -12,6 +13,8 @@ interface LoginModalPT {
 
 export const LoginModal: FC<LoginModalPT> = ({ className, isOpen, onClose }) => (
   <Modal className={cn(s.LoginModal, {}, [className])} isOpen={isOpen} onClose={onClose} lazy>
-    <LoginForm />
+    <Suspense fallback={<Loader />}>
+      <LoginFormLazy />
+    </Suspense>
   </Modal>
 );

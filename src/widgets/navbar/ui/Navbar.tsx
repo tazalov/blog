@@ -45,7 +45,12 @@ export const Navbar: FC<NavbarPT> = ({ className }) => {
     <div className={cn(s.Navbar, {}, [className])}>
       <div className={s.links}>
         <Button theme={ButtonTheme.CLEAR_INDERTED} onClick={onShowModal}>{t('Login')}</Button>
-        <LoginModal isOpen={isAuthModal} onClose={onCloseModal}>{t('Login')}</LoginModal>
+        {isAuthModal
+            && (
+              <LoginModal isOpen={isAuthModal} onClose={onCloseModal}>
+                {t('Login')}
+              </LoginModal>
+            )}
       </div>
     </div>
   );

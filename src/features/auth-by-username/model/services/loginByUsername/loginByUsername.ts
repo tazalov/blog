@@ -8,6 +8,11 @@ interface LoginByUsernamePT {
   password: string
 }
 
+enum LoginErrors {
+  INVALID_DATA= 'invalid',
+  SERVER_ERROR = 'server'
+}
+
 /*
 * Дорогой Илья! Здеся в дженерике 3 аргумент - это объект, в котором мы можем указать типы возвращаемых значений
 * из методов thunkAPI (см. исходники createAsyncThunk)
