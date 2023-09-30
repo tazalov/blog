@@ -1,7 +1,7 @@
 import { RouteProps } from 'react-router-dom';
-import { AboutPage } from '@/pages/about-page';
-import { MainPage } from '@/pages/main-page';
-import { NotFound } from '@/pages/not-found-page';
+import { MainPage } from '@/pages/MainPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { AboutPage } from '@/pages/AboutPage';
 
 /*
 ? Порядок действий:
@@ -49,7 +49,7 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   },
   [AppRoutes.NOT_FOUND]: {
     path: RoutePath.not_found,
-    element: <NotFound />,
+    element: <NotFoundPage />,
   },
 };
 

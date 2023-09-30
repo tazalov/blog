@@ -14,7 +14,7 @@ interface LoginModalPT {
 export const LoginModal: FC<LoginModalPT> = ({ className, isOpen, onClose }) => (
   <Modal className={cn(s.LoginModal, {}, [className])} isOpen={isOpen} onClose={onClose} lazy>
     <Suspense fallback={<Loader />}>
-      <LoginFormLazy />
+      <LoginFormLazy onClose={onClose} />
     </Suspense>
   </Modal>
 );

@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/shared/lib/classNames/cn';
-import s from './NotFound.module.scss';
+import s from './NotFoundPage.module.scss';
 
-interface NotFoundPT {
+interface NotFoundPagePT {
   className?: string;
 }
 
-export const NotFound: FC<NotFoundPT> = ({ className }) => {
+export const NotFoundPage: FC<NotFoundPagePT> = ({ className }) => {
   const { t } = useTranslation();
   return (
-    <div className={cn(s.NotFound, {}, [className])}>
+    <div className={cn(s.NotFoundPage, {}, [className])}>
       {t('Page not found')}
     </div>
   );
