@@ -10,14 +10,20 @@ import {
   loginByUsername,
 } from '../../model/services/loginByUsername/loginByUsername';
 import { Text, TextTheme } from '@/shared/ui/Text/Text';
-import { getUsernameState } from '../../model/selectors/getUsernameState';
-import { getPasswordState } from '../../model/selectors/getPasswordState';
-import { getErrorState } from '../../model/selectors/getErrorState';
-import { getIsLoadingState } from '../../model/selectors/getIsLoadingState';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/dynamicModuleLoader/DynamicModuleLoader';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import {
+  getLoginIsLoading,
+} from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import {
+  getLoginPassword,
+} from '../../model/selectors/getLoginPassword/getLoginPassword';
+import {
+  getLoginUsername,
+} from '../../model/selectors/getLoginUsername/getLoginUsername';
 
 //* Инициализируем редюсеры, которые нужны
 const initialReducers: ReducersList = {
@@ -33,10 +39,10 @@ const LoginForm = memo(({ className }: LoginFormPT) => {
 
   const dispatch = useDispatch();
 
-  const username = useSelector(getUsernameState);
-  const password = useSelector(getPasswordState);
-  const error = useSelector(getErrorState);
-  const isLoading = useSelector(getIsLoadingState);
+  const username = useSelector(getLoginUsername);
+  const password = useSelector(getLoginPassword);
+  const error = useSelector(getLoginError);
+  const isLoading = useSelector(getLoginIsLoading);
 
   const handleOnChangeUsername = (username: string) => {
     dispatch(loginActions.setUsername(username));

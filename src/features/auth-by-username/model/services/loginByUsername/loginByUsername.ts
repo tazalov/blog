@@ -8,10 +8,10 @@ interface LoginByUsernamePT {
   password: string
 }
 
-enum LoginErrors {
+/* enum LoginErrors {
   INVALID_DATA= 'invalid',
   SERVER_ERROR = 'server'
-}
+} */
 
 /*
 * Дорогой Илья! Здеся в дженерике 3 аргумент - это объект, в котором мы можем указать типы возвращаемых значений
@@ -25,7 +25,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernamePT, { rejec
       const response = await axios.post<User>('http://localhost:8000/login', authData);
 
       if (!response.data) {
-        throw new Error();
+        throw new Error('error login');
       }
 
       //* типо храним токен в ЛС
@@ -35,7 +35,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernamePT, { rejec
 
       return response.data;
     } catch (e) {
-      console.warn(e);
+      console.warn(e.message);
       return thunkAPI.rejectWithValue('Invalid username or password');
     }
   },
