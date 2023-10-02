@@ -1,4 +1,4 @@
-import { FC, useState, useCallback } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { cn } from '@/shared/lib/classNames/cn';
@@ -11,7 +11,7 @@ interface NavbarPT {
   className?: string;
 }
 
-export const Navbar: FC<NavbarPT> = ({ className }) => {
+export const Navbar = memo(({ className }: NavbarPT) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ export const Navbar: FC<NavbarPT> = ({ className }) => {
     return (
       <div className={cn(s.Navbar, {}, [className])}>
         <div className={s.links}>
-          <Button theme={ButtonTheme.CLEAR_INDERTED} onClick={onLogout}>{t('Logout')}</Button>
+          <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>{t('Logout')}</Button>
         </div>
       </div>
     );
@@ -44,14 +44,9 @@ export const Navbar: FC<NavbarPT> = ({ className }) => {
   return (
     <div className={cn(s.Navbar, {}, [className])}>
       <div className={s.links}>
-        <Button theme={ButtonTheme.CLEAR_INDERTED} onClick={onShowModal}>{t('Login')}</Button>
-        {isAuthModal
-            && (
-              <LoginModal isOpen={isAuthModal} onClose={onCloseModal}>
-                {t('Login')}
-              </LoginModal>
-            )}
+        <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onShowModal}>{t('Login')}</Button>
+        {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
       </div>
     </div>
   );
-};
+});

@@ -40,7 +40,7 @@ const preview: Preview = {
       defaultValue: 'en',
       toolbar: {
         title: 'LANG',
-        icon: 'globe',
+        Icon: 'globe',
         items: [
           { value: 'en', title: 'English' },
           { value: 'ru', title: 'Русский' },

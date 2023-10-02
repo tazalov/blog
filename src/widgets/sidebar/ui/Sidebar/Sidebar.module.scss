@@ -26,20 +26,6 @@
   gap: 20px;
 }
 
-.item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.link {
-  opacity: 1;
-}
-
-.icon {
-  fill: var(--inverted-primary-color);
-}
-
 .collapseBtn {
   position: absolute;
   bottom: 32px;
@@ -52,12 +38,5 @@
   .switchers {
     flex-direction: column;
     gap: 0;
-  }
-
-  .link {
-    width: 0;
-    height: 0;
-    opacity: 0;
-    transition: opacity 0.1s ease;
   }
 }

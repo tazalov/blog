@@ -77,7 +77,7 @@ export const Clear: Story = {
 export const InvertedClear: Story = {
   args: {
     children: 'I have inverted color',
-    theme: ButtonTheme.CLEAR_INDERTED,
+    theme: ButtonTheme.CLEAR_INVERTED,
   },
 };
 

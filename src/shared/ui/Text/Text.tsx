@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/shared/lib/classNames/cn';
 import s from './Text.module.scss';
@@ -15,9 +15,9 @@ interface TextPT {
   theme?: TextTheme
 }
 
-export const Text: FC<TextPT> = ({
+export const Text = memo(({
   className, title, text, theme = TextTheme.NORMAL,
-}) => {
+}: TextPT) => {
   const { t } = useTranslation();
   return (
     <div className={cn(s.Text, {}, [className, s[theme]])}>
@@ -25,4 +25,4 @@ export const Text: FC<TextPT> = ({
       {text && <p className={s.text}>{text}</p>}
     </div>
   );
-};
+});

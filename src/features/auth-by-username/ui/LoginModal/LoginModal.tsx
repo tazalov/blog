@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react';
+import { Suspense, memo } from 'react';
 import { cn } from '@/shared/lib/classNames/cn';
 import s from './LoginModal.module.scss';
 import { Modal } from '@/shared/ui/Modal/Modal';
@@ -11,10 +11,10 @@ interface LoginModalPT {
   onClose: () => void;
 }
 
-export const LoginModal: FC<LoginModalPT> = ({ className, isOpen, onClose }) => (
+export const LoginModal = memo(({ className, isOpen, onClose }: LoginModalPT) => (
   <Modal className={cn(s.LoginModal, {}, [className])} isOpen={isOpen} onClose={onClose} lazy>
     <Suspense fallback={<Loader />}>
       <LoginFormLazy onClose={onClose} />
     </Suspense>
   </Modal>
-);
+));
