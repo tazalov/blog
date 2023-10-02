@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  SharedDecorator,
-} from '@/shared/config/storybook/stories-decorators/SharedDecorator/SharedDecorator';
 import { Text } from './Text';
 
 const meta = {
   title: 'shared/Text',
   component: Text,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
-  decorators: [SharedDecorator],
   argTypes: {
     title: {
       description: 'Paragraph have large font and primary color (optional). ',

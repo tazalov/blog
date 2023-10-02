@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Loader } from './Loader';
-import {
-  SharedDecorator,
-} from '@/shared/config/storybook/stories-decorators/SharedDecorator/SharedDecorator';
 
 const meta = {
   title: 'shared/Loader',
   component: Loader,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
-  decorators: [SharedDecorator],
   argTypes: {
     className: {
       description: 'The class that is passed from the parent component is used for positioning.',

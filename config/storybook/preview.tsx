@@ -1,53 +1,30 @@
 import type { Preview } from '@storybook/react';
+import { withThemeByClassName } from '@storybook/addon-styling';
 import {
   RouterDecorator,
 } from '@/shared/config/storybook/RouterDecorator/RouterDecorator';
 import {
-  StyleDecorator,
-} from '@/shared/config/storybook/StyleDecorator/StyleDecorator';
-import {
-  ThemeDecorator,
-} from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import {
   StoreDecorator,
 } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import '@/app/styles/index.scss';
 // ? Не работают loki тесты с этим декоратором, если захочешь потом, чтобы он был в сторибуке
 // ? отключи ui тесты и локально и в ci
 /* import {
   TranslationDecorator,
 } from '@/shared/config/storybook/TranslationDecorator/TranslationDecorator'; */
 
+const ThemeDec = withThemeByClassName({
+  themes: {
+    light_theme: 'app_light_theme',
+    dark_theme: 'app_dark_theme',
+  },
+  defaultTheme: 'light_theme',
+  parentSelector: 'body',
+});
+
 const preview: Preview = {
   parameters: {
     controls: { expanded: true },
-  },
-  globalTypes: {
-    theme: {
-      description: 'Global theme for components',
-      defaultValue: 'app_light_theme',
-      toolbar: {
-        title: 'THEME',
-        icon: 'circlehollow',
-        items: [
-          { value: 'app_light_theme', title: 'Light' },
-          { value: 'app_dark_theme', title: 'Dark' },
-        ],
-        dynamicTitle: true,
-      },
-    },
-    /*    locale: {
-      description: 'Internationalization locale',
-      defaultValue: 'en',
-      toolbar: {
-        title: 'LANG',
-        Icon: 'globe',
-        items: [
-          { value: 'en', title: 'English' },
-          { value: 'ru', title: 'Русский' },
-        ],
-        dynamicTitle: true,
-      },
-    }, */
   },
   decorators: [
     StoreDecorator({
@@ -55,8 +32,8 @@ const preview: Preview = {
     }),
     RouterDecorator,
     /*    TranslationDecorator, */
-    ThemeDecorator,
-    StyleDecorator,
+    // @ts-ignore
+    ThemeDec,
   ],
 };
 

@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  FormDecorator,
-} from '@/shared/config/storybook/stories-decorators/FormDecorator/FormDecorator';
 import LoginForm from './LoginForm';
 
 const meta = {
   title: 'features/LoginForm',
   component: LoginForm,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
-  decorators: [FormDecorator],
   argTypes: {
     className: {
       description: 'The class that is passed from the parent component is used for positioning.',

@@ -4,8 +4,9 @@ import { PageError } from './PageError';
 const meta = {
   title: 'widgets/PageError',
   component: PageError,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
   argTypes: {
     className: {

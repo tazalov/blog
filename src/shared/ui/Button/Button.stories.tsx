@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonTheme, ButtonSize } from './Button';
-import {
-  SharedDecorator,
-} from '@/shared/config/storybook/stories-decorators/SharedDecorator/SharedDecorator';
 
 const meta = {
   title: 'shared/Button',
   component: Button,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
-  decorators: [SharedDecorator],
   argTypes: {
     children: {
       description: 'Label text button or other React-component.',

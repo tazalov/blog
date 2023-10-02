@@ -4,6 +4,7 @@ import { Modal } from './Modal';
 const meta = {
   title: 'shared/Modal',
   component: Modal,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },

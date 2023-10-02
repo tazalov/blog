@@ -1,10 +1,12 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import { NavigateFunction } from 'react-router-dom';
 import { StateSchema } from '@/app/providers/store/config/StateSchema';
 import { counterReducer } from '@/entities/counter';
 import { userReducer } from '@/entities/user';
 import {
   createReducerManager,
 } from '@/app/providers/store/config/reducerManager';
+import { $api } from '@/shared/api/api';
 
 /*
  * Шлем нахер доку тулкита с ее ReturnType для получения типа стейта
@@ -21,6 +23,7 @@ import {
 const createReduxStore = (
   initialState?: StateSchema,
   asyncReducers?: ReducersMapObject,
+  navigate?: NavigateFunction,
   isDev = false,
 ) => {
   const rootReducer: ReducersMapObject<StateSchema> = {
@@ -32,11 +35,19 @@ const createReduxStore = (
   //* Создали нашего красавчика и передали в него синхронные редюсеры
   const reducerManager = createReducerManager(rootReducer);
 
-  const store = configureStore<StateSchema>(
+  const store = configureStore(
     {
       reducer: reducerManager.reduce,
       devTools: isDev,
       preloadedState: initialState,
+      middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        thunk: {
+          extraArgument: {
+            api: $api,
+            navigate,
+          },
+        },
+      }),
     },
   );
 

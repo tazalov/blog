@@ -2,10 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Sidebar } from './Sidebar';
 
 const meta = {
-  title: 'widgets/Sidebar',
+  title: 'widgets/Sidebar/Sidebar',
   component: Sidebar,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
   argTypes: {
     className: {

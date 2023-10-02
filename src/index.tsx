@@ -9,15 +9,15 @@ import '@/app/styles/index.scss';
 import { StoreProvider } from './app/providers/store';
 
 const Root: FC = () => (
-  <StoreProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <StoreProvider>
       <ThemeProvider>
         <ErrorBoundary>
           <App />
         </ErrorBoundary>
       </ThemeProvider>
-    </BrowserRouter>
-  </StoreProvider>
+    </StoreProvider>
+  </BrowserRouter>
 );
 
 render(<Root />, document.getElementById('root'));

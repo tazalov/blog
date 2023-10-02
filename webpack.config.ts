@@ -6,7 +6,7 @@ import { BuildEnv, BuildPath } from './config/build/types/config';
 //! в babel.config.json хранятся пресеты (и плагины), чтобы он знал что и во что транспилировать"
 
 //* Здесь мы собираем наш конфиг вебпака
-export default (env: BuildEnv = { mode: 'development', port: 3000 }): webpack.Configuration => {
+export default (env: BuildEnv): webpack.Configuration => {
   /*
    ? Формируем пути с помощью либы path
    * entry - путь - точка входа вебпака
@@ -34,11 +34,14 @@ export default (env: BuildEnv = { mode: 'development', port: 3000 }): webpack.Co
   */
   const isDev = mode === 'development';
 
+  const apiUrl = env.apiUrl || 'http://localhost:8000/';
+
   // ? Формируем наш конфиг и возвращаем его
   return buildWebpackConfig({
     mode,
     paths,
     isDev,
     port,
+    apiUrl,
   });
 };

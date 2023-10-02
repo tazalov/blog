@@ -7,10 +7,10 @@ export type BuildMode = 'development' | 'production'
 
 // ? Тут у нас типы для поля path (buildWebpackConfig.ts)
 export interface BuildPath {
-  entry: string;
-  build: string;
-  html: string;
-  src: string;
+  entry: string
+  build: string
+  html: string
+  src: string
 }
 
 /*
@@ -23,6 +23,7 @@ export interface BuildPath {
 export interface BuildEnv {
   mode: BuildMode
   port: number
+  apiUrl: string
 }
 
 /*
@@ -31,8 +32,9 @@ export interface BuildEnv {
  ! Мы формируем такой объект в webpack.config.ts
 */
 export interface BuildOptions {
-  mode: BuildMode;
-  paths: BuildPath;
-  isDev: boolean;
-  port: number;
+  mode: BuildMode
+  paths: BuildPath
+  isDev: boolean
+  port: number
+  apiUrl: string
 }

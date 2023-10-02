@@ -3,10 +3,11 @@ import { SidebarItem } from './SidebarItem';
 import MainIcon from '@/shared/assets/icons/main.svg';
 
 const meta = {
-  title: 'story/SidebarItem', // change
+  title: 'widgets/Sidebar/SidebarItem', // change
   component: SidebarItem,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen', // change
+    layout: 'centered',
   },
   argTypes: {},
 

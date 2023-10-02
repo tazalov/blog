@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from './Input';
-import {
-  SharedDecorator,
-} from '@/shared/config/storybook/stories-decorators/SharedDecorator/SharedDecorator';
 
 const meta = {
   title: 'shared/Input',
   component: Input,
+  tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
   },
-  decorators: [SharedDecorator],
   argTypes: {
     placeholder: {
       description: 'Label text',

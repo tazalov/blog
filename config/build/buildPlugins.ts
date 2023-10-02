@@ -20,6 +20,7 @@ import { BuildOptions } from './types/config';
 export function buildPlugins({
   paths,
   isDev,
+  apiUrl,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
   const plugins = [
     new webpack.ProgressPlugin(),
@@ -32,6 +33,7 @@ export function buildPlugins({
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(apiUrl),
     }),
   ];
 
