@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 
 const meta = {
-  title: 'story/ProfileCard', // change
+  title: 'entities/ProfileCard', // change
   component: ProfileCard,
   parameters: {
     layout: 'fullscreen', // change

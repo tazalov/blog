@@ -19,7 +19,9 @@ const ProfilePage = memo(() => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (!process.env.STORYBOOK) {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   return (
