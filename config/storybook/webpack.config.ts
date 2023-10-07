@@ -17,22 +17,25 @@ export default ({ config } : {config: webpack.Configuration}) => {
     html: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
-  config.resolve.modules.push(paths.src);
-  config.resolve.extensions.push('.tsx', '.ts', '.js');
-  config.module.rules.push(buildStyleLoader(true));
   // eslint-disable-next-line no-param-reassign
-  config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+  config!.resolve!.alias = { '@': paths.src };
+  config!.resolve!.modules!.push(paths.src);
+  config!.resolve!.extensions!.push('.tsx', '.ts', '.js');
+  config!.module!.rules!.push(buildStyleLoader(true));
+
+  // @ts-ignore
+  // eslint-disable-next-line no-param-reassign
+  config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule) => {
     if (/svg/.test(rule.test as string)) {
       return { ...rule, exclude: /\.svg$/i };
     }
     return rule;
   });
-  config.module.rules.push(buildSVGLoader());
-  config.plugins.push(new DefinePlugin({
+  config!.module!.rules.push(buildSVGLoader());
+  config!.plugins!.push(new DefinePlugin({
     __IS_DEV__: JSON.stringify(true),
     __API__: JSON.stringify(''),
   }));
-  // eslint-disable-next-line no-param-reassign
-  config.resolve.alias = { '@': paths.src };
+
   return config;
 };

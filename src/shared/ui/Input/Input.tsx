@@ -50,7 +50,7 @@ export const Input = memo(({
   }, [autoFocus]);
 
   return (
-    <div className={cn(s.InputWrapper, {}, [])}>
+    <div className={cn(s.InputWrapper, {}, [className])}>
       {placeholder && (
         <div className={s.placeholder}>
           {`${placeholder}>`}
@@ -65,7 +65,7 @@ export const Input = memo(({
           onFocus={handleFocus}
           onSelect={handleSelect}
           onBlur={handleBlur}
-          className={cn(s.input, {}, [className])}
+          className={s.input}
           {...restProps}
         />
         {isFocused && <span className={s.caret} style={{ left: `${caretPosition * 10}px` }} />}

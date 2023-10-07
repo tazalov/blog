@@ -7,7 +7,7 @@ import ProfileIcon from '@/shared/assets/icons/profile.svg';
 export interface SidebarItemT {
   path: string;
   text: string;
-  Icon?: FunctionComponent<SVGAttributes<SVGElement>>
+  Icon: FunctionComponent<SVGAttributes<SVGElement>>
 }
 
 export const SidebarItemsList: SidebarItemT[] = [

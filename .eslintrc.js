@@ -47,6 +47,7 @@ module.exports = {
       { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] },
     ],
     'max-len': [2, { ignoreComments: true, code: 110 }],
+    'no-undef': 'off',
   },
   globals: {
     __IS_DEV__: true,

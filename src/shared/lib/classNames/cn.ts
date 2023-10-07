@@ -11,9 +11,9 @@
 
 //! Record - generic, указывает на то, что в mods у нас будет объект с
 //! ключом string, а значение может быть boolean | string
-type Mods = Record<string, boolean | string>
+export type Mods = Record<string, boolean | string | undefined>
 
-export const cn = (cls: string, mods: Mods = {}, additional: string[] = []): string => {
+export const cn = (cls: string, mods: Mods = {}, additional: Array<string | undefined> = []): string => {
   const clsMods = Object.entries(mods)
     .filter(([, value]) => Boolean(value))
     .map(([className]) => className);

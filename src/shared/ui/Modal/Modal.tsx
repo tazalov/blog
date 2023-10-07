@@ -6,7 +6,7 @@ import {
   useCallback,
   useState,
 } from 'react';
-import { cn } from '@/shared/lib/classNames/cn';
+import { cn, Mods } from '@/shared/lib/classNames/cn';
 import s from './Modal.module.scss';
 import { Portal } from '@/shared/ui/Portal/Portal';
 
@@ -48,7 +48,7 @@ export const Modal: FC<ModalPT> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown, isOpen]);
 
-  const mods = {
+  const mods: Mods = {
     [s.opened]: isOpen,
   };
 

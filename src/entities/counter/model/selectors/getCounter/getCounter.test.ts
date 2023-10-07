@@ -1,4 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import {
   getCounter,
 } from '@/entities/counter/model/selectors/getCounter/getCounter';
