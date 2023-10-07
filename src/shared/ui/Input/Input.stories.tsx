@@ -34,6 +34,10 @@ const meta = {
       description: 'Adding autofocus when component is render.',
       control: false,
     },
+    readonly: {
+      description: 'Flag to activate readonly',
+      control: 'boolean',
+    },
   },
 
 } satisfies Meta<typeof Input>;
@@ -46,5 +50,13 @@ export const Demo: Story = {
   args: {
     placeholder: 'Enter your text',
     value: 'you text',
+  },
+};
+
+export const Readonly: Story = {
+  args: {
+    placeholder: 'Enter your text',
+    value: 'you text',
+    readonly: true,
   },
 };

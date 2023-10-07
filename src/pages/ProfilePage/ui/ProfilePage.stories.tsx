@@ -7,6 +7,25 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    mockData: [
+      {
+        url: '/profile',
+        method: 'GET',
+        status: 200,
+        response: {
+          data: {},
+        },
+      },
+      {
+        url: '/profile',
+        method: 'PUT',
+        status: 200,
+        response: {
+          data: {},
+        },
+        delay: 1000,
+      },
+    ],
   },
 } satisfies Meta<typeof ProfilePage>;
 

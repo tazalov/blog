@@ -26,13 +26,13 @@
     }
   ],
   "profile": {
-    "first" : "Iliya",
-    "lastname" : "Tazalov",
-    "age" : "27",
-    "currency" : "RUB",
-    "country" : "Russia",
-    "city" : "Arzamas",
-    "username" : "admin",
-    "avatar" : "https://social-network.samuraijs.com/activecontent/images/users/29403/user.jpg?v=56"
+    "first": "Iliya",
+    "lastname": "Tazalov",
+    "age": 26,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Arzamas",
+    "username": "admin",
+    "avatar": "https://social-network.samuraijs.com/activecontent/images/users/29403/user.jpg?v=56"
   }
 }

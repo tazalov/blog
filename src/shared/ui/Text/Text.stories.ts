@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Text } from './Text';
+import { Text, TextAlign } from './Text';
 
 const meta = {
   title: 'shared/Text',
@@ -20,6 +20,10 @@ const meta = {
     theme: {
       description: 'The theme of the button that we pass from the parent.',
       control: 'radio',
+    },
+    align: {
+      description: 'Value for change text-align property for title & text',
+      control: 'select',
     },
   },
 
@@ -45,5 +49,29 @@ export const OnlyTitle: Story = {
 export const OnlyText: Story = {
   args: {
     text: 'Lorem ipsum',
+  },
+};
+
+export const AlignLeft: Story = {
+  args: {
+    title: 'Title',
+    text: 'Lorem ipsum',
+    align: TextAlign.LEFT,
+  },
+};
+
+export const AlignCenter: Story = {
+  args: {
+    title: 'Title',
+    text: 'Lorem ipsum',
+    align: TextAlign.CENTER,
+  },
+};
+
+export const AlignRight: Story = {
+  args: {
+    title: 'Title',
+    text: 'Lorem ipsum',
+    align: TextAlign.RIGHT,
   },
 };

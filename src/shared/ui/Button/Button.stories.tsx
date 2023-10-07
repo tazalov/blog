@@ -35,6 +35,7 @@ const meta = {
       description: 'Changes opacity style to 0.5',
       control: 'boolean',
     },
+
   },
 
 } satisfies Meta<typeof Button>;
@@ -61,6 +62,13 @@ export const Outline: Story = {
   args: {
     children: 'Outline',
     theme: ButtonTheme.OUTLINE,
+  },
+};
+
+export const Action: Story = {
+  args: {
+    children: 'Cancel',
+    theme: ButtonTheme.OUTLINE_ACTION,
   },
 };
 
