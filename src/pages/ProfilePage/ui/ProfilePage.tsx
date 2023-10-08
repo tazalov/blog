@@ -17,6 +17,8 @@ import {
 } from '@/entities/profile';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ProfilePageHeader } from '../ui/ProfilePageHeader/ProfilePageHeader';
+import { Currency } from '@/entities/currency';
+import { Countries } from '@/entities/country/model/types/country';
 
 const initialReducers: ReducersList = { profile: profileReducer };
 
@@ -58,6 +60,14 @@ const ProfilePage = memo(() => {
     dispatch(profileActions.updateProfile({ avatar: value || '' }));
   }, [dispatch]);
 
+  const handleChangeCurrency = useCallback((value?: Currency) => {
+    dispatch(profileActions.updateProfile({ currency: value }));
+  }, [dispatch]);
+
+  const handleChangeCountry = useCallback((value?: Countries) => {
+    dispatch(profileActions.updateProfile({ country: value }));
+  }, [dispatch]);
+
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <div>
@@ -73,6 +83,8 @@ const ProfilePage = memo(() => {
           changeCity={handleChangeCity}
           changeUsername={handleChangeUsername}
           changeAvatar={handleChangeAvatar}
+          changeCurrency={handleChangeCurrency}
+          changeCountry={handleChangeCountry}
         />
       </div>
     </DynamicModuleLoader>

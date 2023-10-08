@@ -33,7 +33,6 @@ export const ProfilePageHeader: FC<ProfilePageHeaderPT> = ({ className }) => {
 
   const handleSave = useCallback(() => {
     dispatch(updateProfileData());
-    dispatch(profileActions.setReadonly(true));
   }, [dispatch]);
 
   return (

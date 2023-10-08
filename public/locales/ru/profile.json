@@ -7,8 +7,10 @@
   "Try to reload the page": "Попробуйте перезагрузить страницу",
   "Save": "Сохранить",
   "Cancel": "Отменить",
-  "Your age": "Возраст",
-  "Your city": "Город",
-  "Your username": "Ваше имя пользователя",
-  "Avatar link": "Ссылка на аватар"
+  "Age": "Возраст",
+  "City": "Город",
+  "Country": "Страна",
+  "Username": "Имя пользователя",
+  "Avatar link": "Ссылка на аватар",
+  "Enter currency": "Укажите валюту"
 }

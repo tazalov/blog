@@ -7,8 +7,10 @@
   "Try to reload the page": "Try to reload the page",
   "Save": "Save",
   "Cancel": "Cancel",
-  "Your age": "Your age",
-  "Your city": "Your city",
-  "Your username": "Your username",
-  "Avatar link": "Avatar link"
+  "Age": "Age",
+  "City": "City",
+  "Country": "Country",
+  "Username": "Username",
+  "Avatar link": "Avatar link",
+  "Enter currency": "Enter currency"
 }

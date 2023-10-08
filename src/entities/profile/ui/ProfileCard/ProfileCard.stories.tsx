@@ -5,6 +5,7 @@ import { ProfileT } from '@/entities/profile';
 const meta = {
   title: 'entities/ProfileCard',
   component: ProfileCard,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },

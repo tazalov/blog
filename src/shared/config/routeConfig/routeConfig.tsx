@@ -4,6 +4,10 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 
+type AppRoutesPT = RouteProps & {
+  authOnly?: boolean
+}
+
 /*
 ? Порядок действий:
 ? сначала добавляешь в enum название странички: 'profile', 'dialogs' ...
@@ -41,7 +45,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 * описали его структуру
 ! по сути это объединение предыдущих сущностей в одну, с указанием того, какой элемент отобразить
 */
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export const routeConfig: Record<AppRoutes, AppRoutesPT> = {
   [AppRoutes.MAIN]: {
     path: RoutePath.main,
     element: <MainPage />,
@@ -53,6 +57,7 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.PROFILE]: {
     path: RoutePath.profile,
     element: <ProfilePage />,
+    authOnly: true,
   },
   [AppRoutes.NOT_FOUND]: {
     path: RoutePath.not_found,

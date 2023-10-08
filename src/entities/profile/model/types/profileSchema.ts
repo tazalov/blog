@@ -1,4 +1,5 @@
-import { Currency, Countries } from '@/shared/const/common';
+import { Currency } from '@/entities/currency';
+import { Countries } from '@/entities/country/model/types/country';
 
 export interface ProfileT {
   first?: string

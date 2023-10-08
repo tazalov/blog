@@ -7,6 +7,8 @@ import { Input } from '@/shared/ui/Input/Input';
 import { ProfileT } from '../../model/types/profileSchema';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { CurrencySelect, Currency } from '@/entities/currency';
+import { Countries, CountrySelect } from '@/entities/country';
 
 interface ProfileCardPT {
   className?: string;
@@ -20,6 +22,8 @@ interface ProfileCardPT {
   changeCity?:(value?: string) => void
   changeUsername?:(value?: string) => void
   changeAvatar?:(value?: string) => void
+  changeCurrency?:(value?: Currency) => void
+  changeCountry?:(value?: Countries) => void
 }
 
 export const ProfileCard: FC<ProfileCardPT> = ({
@@ -34,6 +38,8 @@ export const ProfileCard: FC<ProfileCardPT> = ({
   changeCity,
   changeUsername,
   changeAvatar,
+  changeCurrency,
+  changeCountry,
 }) => {
   const { t } = useTranslation('profile');
 
@@ -91,7 +97,7 @@ export const ProfileCard: FC<ProfileCardPT> = ({
         <Input
           value={data?.age}
           onChange={changeAge}
-          placeholder={t('Your age')}
+          placeholder={t('Age')}
           readonly={readonly}
           className={s.input}
           type="number"
@@ -99,14 +105,20 @@ export const ProfileCard: FC<ProfileCardPT> = ({
         <Input
           value={data?.city}
           onChange={changeCity}
-          placeholder={t('Your city')}
+          placeholder={t('City')}
+          readonly={readonly}
+          className={s.input}
+        />
+        <CountrySelect
+          value={data?.country}
+          onChange={changeCountry}
           readonly={readonly}
           className={s.input}
         />
         <Input
           value={data?.username}
           onChange={changeUsername}
-          placeholder={t('Your username')}
+          placeholder={t('Username')}
           readonly={readonly}
           className={s.input}
         />
@@ -114,6 +126,12 @@ export const ProfileCard: FC<ProfileCardPT> = ({
           value={data?.avatar}
           onChange={changeAvatar}
           placeholder={t('Avatar link')}
+          readonly={readonly}
+          className={s.input}
+        />
+        <CurrencySelect
+          value={data?.currency}
+          onChange={changeCurrency}
           readonly={readonly}
           className={s.input}
         />

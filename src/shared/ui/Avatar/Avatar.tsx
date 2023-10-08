@@ -1,4 +1,4 @@
-import { FC, useMemo, CSSProperties } from 'react';
+import { useMemo, CSSProperties, memo } from 'react';
 import s from './Avatar.module.scss';
 import { cn } from '@/shared/lib/classNames/cn';
 
@@ -9,9 +9,9 @@ interface AvatarPT {
   alt?: string
 }
 
-export const Avatar: FC<AvatarPT> = ({
+export const Avatar = memo(({
   className, src, size, alt,
-}) => {
+}: AvatarPT) => {
   const styles = useMemo<CSSProperties>(() => ({
     width: `${size}px`,
     height: `${size}px`,
@@ -19,4 +19,4 @@ export const Avatar: FC<AvatarPT> = ({
   return (
     <img src={src} className={cn(s.Avatar, {}, [className])} style={styles} alt={alt} />
   );
-};
+});
