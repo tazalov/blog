@@ -8,10 +8,13 @@ export interface SidebarItemT {
   path: string;
   text: string;
   Icon: FunctionComponent<SVGAttributes<SVGElement>>
+  authOnly?: boolean
 }
 
 export const SidebarItemsList: SidebarItemT[] = [
   { path: RoutePath.main, text: 'Main', Icon: MainIcon },
   { path: RoutePath.about, text: 'About', Icon: AboutIcon },
-  { path: RoutePath.profile, text: 'Profile', Icon: ProfileIcon },
+  {
+    path: RoutePath.profile, text: 'Profile', Icon: ProfileIcon, authOnly: true,
+  },
 ];
