@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProfilePage from './ProfilePage';
+import {
+  StoreDecorator,
+} from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import avatar from '@/shared/assets/tests/user.jpg';
+import { Currency } from '@/entities/currency';
+import { Countries } from '@/entities/country';
 
 const meta = {
   title: 'pages/ProfilePage',
@@ -7,26 +13,22 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
-    mockData: [
-      {
-        url: '/profile',
-        method: 'GET',
-        status: 200,
-        response: {
-          data: {},
-        },
-      },
-      {
-        url: '/profile',
-        method: 'PUT',
-        status: 200,
-        response: {
-          data: {},
-        },
-        delay: 1000,
-      },
-    ],
   },
+  decorators: [StoreDecorator({
+    profile: {
+      form: {
+        username: 'myusername',
+        first: 'Sam',
+        lastname: 'Smith',
+        avatar,
+        age: 20,
+        city: 'Moscow',
+        currency: Currency.EUR,
+        country: Countries.Russia,
+      },
+      readonly: true,
+    },
+  })],
 } satisfies Meta<typeof ProfilePage>;
 
 export default meta;

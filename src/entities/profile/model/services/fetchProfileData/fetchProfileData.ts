@@ -7,12 +7,15 @@ export const fetchProfileData = createAsyncThunk<ProfileT, void, ThunkConfig<str
   async (_, thunkAPI) => {
     const { extra, rejectWithValue } = thunkAPI;
     try {
-      //* в экстра прокинули инстанс апи и навигейт, смотри store.ts
       const response = await extra.api.get<ProfileT>('/profile');
+
+      if (!response.data) {
+        throw new Error();
+      }
 
       return response.data;
     } catch (e) {
-      return rejectWithValue('Invalid username or password');
+      return rejectWithValue('Request execution error');
     }
   },
 );

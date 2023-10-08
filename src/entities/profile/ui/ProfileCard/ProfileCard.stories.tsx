@@ -1,13 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { ProfileT } from '@/entities/profile';
+import { Currency } from '@/entities/currency';
+import { Countries } from '@/entities/country';
+import avatar from '@/shared/assets/tests/user.jpg';
 
 const meta = {
   title: 'entities/ProfileCard',
   component: ProfileCard,
   tags: ['autodocs'],
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
   argTypes: {
     className: {
@@ -43,9 +46,11 @@ const profile: ProfileT = {
   username: 'myusername',
   first: 'Sam',
   lastname: 'Smith',
-  avatar: 'https://social-network.samuraijs.com/activecontent/images/users/29403/user.jpg?v=56',
+  avatar,
   age: 20,
   city: 'Moscow',
+  currency: Currency.EUR,
+  country: Countries.Russia,
 };
 
 export const Demo: Story = {

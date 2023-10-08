@@ -7,6 +7,7 @@ export default {
   globals: {
     __IS_DEV__: true,
     __API__: '',
+    __PROJECT__: 'jest',
   },
   clearMocks: true,
   testEnvironment: 'jsdom',
@@ -26,8 +27,9 @@ export default {
   ],
   // Порядок важен, я в ахуе
   moduleNameMapper: {
-    // ? Мокаем все импорты для .svg
+    // ? Мокаем все импорты для .svg и .jpg
     '\\.svg$': '<rootDir>/config/jest/jest-empty-component.tsx',
+    '\\.jpg$': '<rootDir>/config/jest/jest-empty-component.tsx',
     // ? Добавляем поддержку scss для тестов
     '\\.(s?css)$': 'identity-obj-proxy',
     // ? Добавляем поддержку аллиасов для тестов

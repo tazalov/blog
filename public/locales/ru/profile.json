@@ -12,5 +12,10 @@
   "Country": "Страна",
   "Username": "Имя пользователя",
   "Avatar link": "Ссылка на аватар",
-  "Enter currency": "Укажите валюту"
+  "Enter currency": "Укажите валюту",
+  "Server error": "Серверная ошибка",
+  "Data is not specified": "Данные не указаны",
+  "First and last name requared": "Имя и фамилия обязательные",
+  "Incorrect country": "Некорректная страна",
+  "Incorrect age": "Некорректный возраст"
 }

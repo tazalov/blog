@@ -12,5 +12,10 @@
   "Country": "Country",
   "Username": "Username",
   "Avatar link": "Avatar link",
-  "Enter currency": "Enter currency"
+  "Enter currency": "Enter currency",
+  "Server error": "Server error",
+  "Data is not specified": "Data is not specified",
+  "First and last name requared": "First and last name requared",
+  "Incorrect country": "Incorrect country",
+  "Incorrect age": "Incorrect age"
 }

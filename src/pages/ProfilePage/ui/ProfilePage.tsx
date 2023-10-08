@@ -14,16 +14,27 @@ import {
   profileActions,
   getProfileReadonly,
   getProfileForm,
+  getProfileValidateErrors,
+  ValidateProfileData,
 } from '@/entities/profile';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { ProfilePageHeader } from '../ui/ProfilePageHeader/ProfilePageHeader';
 import { Currency } from '@/entities/currency';
 import { Countries } from '@/entities/country/model/types/country';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
 
 const initialReducers: ReducersList = { profile: profileReducer };
 
 const ProfilePage = memo(() => {
   const { t } = useTranslation('profile');
+
+  const errorTranslations = {
+    [ValidateProfileData.SERVER_ERROR]: t('Server error'),
+    [ValidateProfileData.NO_DATA]: t('Data is not specified'),
+    [ValidateProfileData.INCORRECT_USER_DATA]: t('First and last name requared'),
+    [ValidateProfileData.INCORRECT_COUNTRY]: t('Incorrect country'),
+    [ValidateProfileData.INCORRECT_AGE]: t('Incorrect age'),
+  };
 
   const dispatch = useAppDispatch();
 
@@ -31,9 +42,12 @@ const ProfilePage = memo(() => {
   const error = useSelector(getProfileError);
   const isLoading = useSelector(getProfileIsLoading);
   const readonly = useSelector(getProfileReadonly);
+  const validateErrors = useSelector(getProfileValidateErrors);
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   const handleChangeFirstname = useCallback((value?: string) => {
@@ -72,6 +86,9 @@ const ProfilePage = memo(() => {
     <DynamicModuleLoader reducers={initialReducers}>
       <div>
         <ProfilePageHeader />
+        {validateErrors && validateErrors.map((el) => (
+          <Text key={el} theme={TextTheme.ERROR} text={errorTranslations[el]} />
+        ))}
         <ProfileCard
           data={formData}
           isLoading={isLoading}
