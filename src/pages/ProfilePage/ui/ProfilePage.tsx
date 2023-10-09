@@ -25,7 +25,7 @@ import { Text, TextTheme } from '@/shared/ui/Text/Text';
 
 const initialReducers: ReducersList = { profile: profileReducer };
 
-const ProfilePage = memo(() => {
+const ProfilePage = () => {
   const { t } = useTranslation('profile');
 
   const errorTranslations = {
@@ -106,6 +106,6 @@ const ProfilePage = memo(() => {
       </div>
     </DynamicModuleLoader>
   );
-});
+};
 
-export default ProfilePage;
+export default memo(ProfilePage);
