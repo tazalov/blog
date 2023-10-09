@@ -7,10 +7,14 @@ import { profileReducer } from '@/entities/profile';
 import {
   ReducersList,
 } from '@/shared/lib/dynamicModuleLoader/DynamicModuleLoader';
+import {
+  articleDetailsReducer,
+} from '@/entities/article/model/slice/articleDetails.slice';
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
+  articleDetails: articleDetailsReducer,
 };
 
 export const StoreDecorator = (

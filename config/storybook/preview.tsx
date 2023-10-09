@@ -17,6 +17,7 @@ const ThemeDec = withThemeByClassName({
   themes: {
     light_theme: 'app_light_theme',
     dark_theme: 'app_dark_theme',
+    green_theme: 'app_green_theme',
   },
   defaultTheme: 'light_theme',
   parentSelector: 'body',
