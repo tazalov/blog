@@ -4,7 +4,7 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 
-type AppRoutesPT = RouteProps & {
+export type AppRoutesPT = RouteProps & {
   authOnly?: boolean
 }
 
@@ -49,6 +49,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesPT> = {
   [AppRoutes.MAIN]: {
     path: RoutePath.main,
     element: <MainPage />,
+
   },
   [AppRoutes.ABOUT]: {
     path: RoutePath.about,

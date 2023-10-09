@@ -5,4 +5,7 @@ export interface User {
 
 export interface UserSchema {
   authData?: User
+
+  //* флаг нужен, чтобы наши роуты отрабатывали ТОЛЬКО после инициализации авторизованности юзера
+  _inited: boolean
 }

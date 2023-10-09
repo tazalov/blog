@@ -1,13 +1,15 @@
 import { FC, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppRouter } from '@/app/providers/router';
 import { cn } from '@/shared/lib/classNames/cn';
 import { Navbar } from '@/widgets/navbar';
 import { Sidebar } from '@/widgets/sidebar';
-import { userActions } from '@/entities/user';
+import { userActions, getUserInit } from '@/entities/user';
 
 export const App: FC = () => {
   const dispatch = useDispatch();
+
+  const _inited = useSelector(getUserInit);
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
@@ -19,7 +21,7 @@ export const App: FC = () => {
         <Navbar />
         <div className="content-page">
           <Sidebar />
-          <AppRouter />
+          {_inited && <AppRouter />}
         </div>
       </Suspense>
     </div>

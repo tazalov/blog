@@ -2,29 +2,12 @@ import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildStyleLoader } from './loaders/buildStyleLoader';
 import { buildSVGLoader } from './loaders/buildSVGLoader';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 //* Тутова мы собираем loaders и вызываем функцию в buildWebPackConfig.ts в ключе module.rules
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
-  const babelLoader = {
-    test: /\.(js|mjs|cjs|jsx|tsx)$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: [
-          ['@babel/preset-env', { targets: 'defaults' }],
-        ],
-        plugins: [
-          [
-            'i18next-extract',
-            {
-              locales: ['en', 'ru'],
-              keyAsDefaultValue: true,
-            }]],
-      },
-    },
-  };
+  const babelLoader = buildBabelLoader(options);
 
   const svgLoader = buildSVGLoader();
 
