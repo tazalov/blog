@@ -72,7 +72,7 @@ describe('profile.slice.test', () => {
       isLoading: true,
       error: 'Some error',
     };
-    const newState = profileReducer(initialState as ProfileSchema, fetchProfileData.fulfilled(profile, ''));
+    const newState = profileReducer(initialState as ProfileSchema, fetchProfileData.fulfilled(profile, '1', ''));
     expect(newState.isLoading).toBeFalsy();
     expect(newState.error).not.toBeDefined();
     expect(newState.data).toEqual(profile);

@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CommentList } from './CommentList';
 
 const meta = {
-  title: 'entities/Comments/CommentList', // change
+  title: 'entities/Comments/CommentList',
   component: CommentList,
   parameters: {
-    layout: 'centered', // change
+    layout: 'centered',
   },
   argTypes: {
     comments: {
@@ -56,5 +56,11 @@ export const Demo: Story = {
 export const EmptyArray: Story = {
   args: {
     comments: [],
+  },
+};
+
+export const isLoading: Story = {
+  args: {
+    isLoading: true,
   },
 };

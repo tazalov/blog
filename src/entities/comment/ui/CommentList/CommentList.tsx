@@ -15,6 +15,17 @@ interface CommentListPT {
 export const CommentList = memo(
   ({ className, comments, isLoading }: CommentListPT) => {
     const { t } = useTranslation();
+
+    if (isLoading) {
+      return (
+        <div className={cn(s.CommentList, {}, [className])}>
+          <CommentCard className={s.comment} isLoading />
+          <CommentCard className={s.comment} isLoading />
+          <CommentCard className={s.comment} isLoading />
+        </div>
+      );
+    }
+
     return (
       <div className={cn(s.CommentList, {}, [className])}>
         {comments?.length

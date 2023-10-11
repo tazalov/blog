@@ -6,6 +6,8 @@ import { CommentT } from '@/entities/comment';
 import { Text } from '@/shared/ui/Text/Text';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 
 interface CommentCardPT {
   className?: string
@@ -19,7 +21,7 @@ export const CommentCard = memo(
 
     if (isLoading) {
       return (
-        <div className={cn(s.CommentCard, {}, [className])}>
+        <div className={cn(s.CommentCard, {}, [className, s.loading])}>
           <div className={s.header}>
             <Skeleton border="50%" width={50} height={50} />
             <Skeleton className={s.username} width={200} height={30} />
@@ -29,12 +31,16 @@ export const CommentCard = memo(
       );
     }
 
+    if (!comment) {
+      return null;
+    }
+
     return (
       <div className={cn(s.CommentCard, {}, [className])}>
-        <div className={s.header}>
+        <AppLink to={`${RoutePath.profile}/${comment?.user.id}`} className={s.header}>
           {comment?.user.avatar ? <Avatar size={50} src={comment?.user.avatar} /> : null}
           <Text className={s.username} title={comment?.user.username} />
-        </div>
+        </AppLink>
         <Text className={s.text} text={comment?.text} />
       </div>
     );

@@ -14,6 +14,7 @@ const profile: ProfileT = {
   city: 'Moscow',
   currency: Currency.EUR,
   country: Countries.Russia,
+  id: '1',
 };
 
 describe('updateProfileData async thunk', () => {

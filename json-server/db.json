@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "09.10.2023",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -118,14 +120,28 @@
       "avatar": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png"
     }
   ],
-  "profile": {
-    "first": "asd",
-    "lastname": "Tazalov",
-    "age": 264465,
-    "currency": "RUB",
-    "country": "Ukraine",
-    "city": "Arzamas",
-    "username": "admin",
-    "avatar": "https://social-network.samuraijs.com/activecontent/images/users/29403/user.jpg?v=56"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "asd",
+      "lastname": "Tazalov",
+      "age": 25,
+      "currency": "RUB",
+      "country": "Ukraine",
+      "city": "Arzamas",
+      "username": "admin",
+      "avatar": "https://social-network.samuraijs.com/activecontent/images/users/29403/user.jpg?v=56"
+    },
+    {
+      "id": "2",
+      "first": "Dear",
+      "lastname": "Guest",
+      "age": 23,
+      "currency": "USD",
+      "country": "Russia",
+      "city": "Arzamas",
+      "username": "guest",
+      "avatar": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png"
+    }
+  ]
 }

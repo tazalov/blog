@@ -5,6 +5,7 @@ import { cn } from '@/shared/lib/classNames/cn';
 import { Navbar } from '@/widgets/navbar';
 import { Sidebar } from '@/widgets/sidebar';
 import { userActions, getUserInit } from '@/entities/user';
+import { Loader } from '@/shared/ui/Loader/Loader';
 
 export const App: FC = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const App: FC = () => {
 
   return (
     <div className={cn('app', {})}>
-      <Suspense fallback="">
+      <Suspense fallback={<Loader />}>
         <Navbar />
         <div className="content-page">
           <Sidebar />

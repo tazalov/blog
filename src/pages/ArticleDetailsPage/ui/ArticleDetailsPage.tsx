@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -14,15 +14,16 @@ import {
   articleDetailsCommentReducer,
   getArticleComments,
 } from '../model/slice/articleDetailsComment.slice';
-import {
-  getCommentsIsLoading,
-  getCommentsError,
-} from '../model/selectors/comments';
+import { getCommentsIsLoading } from '../model/selectors/comments';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
   fetchCommentsByArticleId,
 } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { AddCommentForm } from '@/features/add-comment-form';
+import {
+  addCommentForArticle,
+} from '../model/services/addCommentForArticle/addCommentForArticle';
 
 const initialReducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentReducer,
@@ -36,10 +37,15 @@ const ArticleDetailsPage = () => {
 
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getCommentsIsLoading);
-  const error = useSelector(getCommentsError);
+
+  const handleSandComment = useCallback((commentText: string) => {
+    dispatch(addCommentForArticle(commentText));
+  }, [dispatch]);
 
   useInitialEffect(() => {
-    dispatch(fetchCommentsByArticleId(id));
+    if (id) {
+      dispatch(fetchCommentsByArticleId(id));
+    }
   });
 
   if (!id) {
@@ -53,6 +59,7 @@ const ArticleDetailsPage = () => {
       <div>
         <ArticleDetails id={id} className={s.ArticleDetailsPage} />
         <Text className={s.commentTitle} title={t('Comments')} />
+        <AddCommentForm sendComment={handleSandComment} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />
       </div>
     </DynamicModuleLoader>

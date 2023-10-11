@@ -10,11 +10,19 @@ import {
 import {
   articleDetailsReducer,
 } from '@/entities/article/model/slice/articleDetails.slice';
+import {
+  addCommentFormReducer,
+} from '@/features/add-comment-form/model/slice/addCommentForm.slice';
+import {
+  articleDetailsCommentReducer,
+} from '@/pages/ArticleDetailsPage/model/slice/articleDetailsComment.slice';
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
+  articleDetailsComments: articleDetailsCommentReducer,
+  addCommentForm: addCommentFormReducer,
 };
 
 export const StoreDecorator = (

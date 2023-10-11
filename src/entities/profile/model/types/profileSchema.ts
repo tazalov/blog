@@ -10,6 +10,7 @@ export enum ValidateProfileData {
 }
 
 export interface ProfileT {
+  id?: string
   first?: string
   lastname?: string
   age?: number
