@@ -35,7 +35,6 @@ const meta = {
       description: 'Changes opacity style to 0.5',
       control: 'boolean',
     },
-
   },
 
 } satisfies Meta<typeof Button>;

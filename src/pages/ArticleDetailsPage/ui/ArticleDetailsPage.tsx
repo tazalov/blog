@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ArticleDetails } from '@/entities/article';
 import { Text, TextTheme } from '@/shared/ui/Text/Text';
@@ -24,6 +24,7 @@ import { AddCommentForm } from '@/features/add-comment-form';
 import {
   addCommentForArticle,
 } from '../model/services/addCommentForArticle/addCommentForArticle';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 
 const initialReducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentReducer,
@@ -34,9 +35,14 @@ const ArticleDetailsPage = () => {
 
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getCommentsIsLoading);
+
+  const handleBackToList = useCallback(() => {
+    navigate(-1);
+  }, [navigate]);
 
   const handleSandComment = useCallback((commentText: string) => {
     dispatch(addCommentForArticle(commentText));
@@ -57,6 +63,7 @@ const ArticleDetailsPage = () => {
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <div>
+        <Button theme={ButtonTheme.OUTLINE} onClick={handleBackToList}>{t('Back to list')}</Button>
         <ArticleDetails id={id} className={s.ArticleDetailsPage} />
         <Text className={s.commentTitle} title={t('Comments')} />
         <AddCommentForm sendComment={handleSandComment} />

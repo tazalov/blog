@@ -48,6 +48,7 @@ module.exports = {
     ],
     'max-len': [2, { ignoreComments: true, code: 110 }],
     'no-undef': 'off',
+    'react/no-array-index-key': 'warn',
   },
   globals: {
     __IS_DEV__: true,
