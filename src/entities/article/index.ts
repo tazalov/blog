@@ -4,3 +4,4 @@ export type { ArticleT } from './model/types/article';
 export { ArticleViewMode } from './model/types/article';
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 export { getArticleDetailsData } from './model/selectors/articleDetails';
+export { article } from './model/const/tests/article';
