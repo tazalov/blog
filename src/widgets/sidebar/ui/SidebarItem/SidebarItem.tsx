@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import s from './SidebarItem.module.scss';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
-import { SidebarItemT } from '../../model/items';
 import { cn } from '@/shared/lib/classNames/cn';
 import { getUserAuthData } from '@/entities/user';
+import { SidebarItemT } from '@/widgets/sidebar/model/types/sidebar';
 
 interface SidebarItemPT {
   item: SidebarItemT
