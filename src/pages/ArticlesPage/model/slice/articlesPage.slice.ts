@@ -9,6 +9,7 @@ import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
 import {
   fetchArticlesList,
 } from '../services/fetchArticlesList/fetchArticlesList';
+import { ARTICLE_VIEW_LS_KEY } from '@/shared/const/localStorage';
 
 const articlesAdapter = createEntityAdapter<ArticleT>({
   selectId: (article) => article.id,
@@ -30,6 +31,10 @@ const articlesPageSlice = createSlice({
   reducers: {
     setView: (state, action: PayloadAction<ArticleViewMode>) => {
       state.view = action.payload;
+      localStorage.setItem(ARTICLE_VIEW_LS_KEY, action.payload);
+    },
+    initState: (state) => {
+      state.view = localStorage.getItem(ARTICLE_VIEW_LS_KEY) as ArticleViewMode;
     },
   },
   extraReducers: (builder) => {

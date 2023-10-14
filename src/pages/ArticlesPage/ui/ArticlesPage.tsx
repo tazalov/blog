@@ -1,9 +1,13 @@
-import { FC, memo } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import s from './ArticlesPage.module.scss';
 import { cn } from '@/shared/lib/classNames/cn';
-import { ArticleList } from '@/entities/article';
+import {
+  ArticleList,
+  ArticleViewMode,
+  ArticleViewSwitcher,
+} from '@/entities/article';
 import {
   ReducersList,
   DynamicModuleLoader,
@@ -11,6 +15,7 @@ import {
 import {
   articlesPageReducer,
   getArticles,
+  articlesPageActions,
 } from '../model/slice/articlesPage.slice';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
@@ -37,14 +42,20 @@ const ArticlesPage: FC = ({}) => {
   const error = useSelector(getArticlesPageError);
   const viewMode = useSelector(getArticlesViewMode);
 
+  const handleChangeViewMode = useCallback((viewMode: ArticleViewMode) => {
+    dispatch(articlesPageActions.setView(viewMode));
+  }, [dispatch]);
+
   useInitialEffect(() => {
     dispatch(fetchArticlesList());
+    dispatch(articlesPageActions.initState());
   });
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <div className={cn(s.ArticlesPage, {}, [])}>
         {t('ArticlesPage')}
+        <ArticleViewSwitcher viewMode={viewMode} changeView={handleChangeViewMode} />
         <ArticleList
           isLoading={isLoading}
           viewMode={viewMode}
