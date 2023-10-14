@@ -10,6 +10,7 @@ import { ProfileSchema } from '@/entities/profile';
 import { ArticleDetailsSchema } from '@/entities/article';
 import { ArticleDetailsCommentSchema } from '@/pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from '@/features/add-comment-form';
+import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 
 export interface StateSchema {
   counter: CounterSchema
@@ -21,6 +22,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema
   articleDetailsComments?: ArticleDetailsCommentSchema
   addCommentForm?: AddCommentFormSchema
+  articlesPage?: ArticlesPageSchema
 }
 
 export type KeyReducersT = keyof StateSchema
