@@ -7,7 +7,6 @@ export const getArticlesPageError = (state: StateSchema) => state.articlesPage?.
 
 export const getArticlesViewMode = (state: StateSchema) => state.articlesPage?.view || ArticleViewMode.SMALL;
 
-// TODO TEST
 export const getArticlesPageLimit = (state: StateSchema) => state.articlesPage?.limit || 8;
 
 export const getArticlesPageHasMore = (state: StateSchema) => state.articlesPage?.hasMore;

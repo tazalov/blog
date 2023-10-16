@@ -9,7 +9,6 @@ interface FetchArticlesListPT {
   page?: number
 }
 
-// TODO TEST
 export const fetchArticlesList = createAsyncThunk<ArticleT[], FetchArticlesListPT, ThunkConfig<string>>(
   'articleDetails/fetchCommentsByArticleId',
   async ({ page = 1 }, thunkAPI) => {
