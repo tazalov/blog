@@ -7,6 +7,7 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   argTypes: {
     code: {
       description: 'String with code & formatting',

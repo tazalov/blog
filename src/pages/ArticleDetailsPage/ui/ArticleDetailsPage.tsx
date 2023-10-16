@@ -25,6 +25,7 @@ import {
   addCommentForArticle,
 } from '../model/services/addCommentForArticle/addCommentForArticle';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Page } from '@/shared/ui/Page/Page';
 
 const initialReducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentReducer,
@@ -56,19 +57,21 @@ const ArticleDetailsPage = () => {
 
   if (!id) {
     return (
-      <Text title={t('Something went wrong')} text={t('Article not found')} theme={TextTheme.ERROR} />
+      <Page>
+        <Text title={t('Something went wrong')} text={t('Article not found')} theme={TextTheme.ERROR} />
+      </Page>
     );
   }
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <div>
+      <Page>
         <Button theme={ButtonTheme.OUTLINE} onClick={handleBackToList}>{t('Back to list')}</Button>
         <ArticleDetails id={id} className={s.ArticleDetailsPage} />
         <Text className={s.commentTitle} title={t('Comments')} />
         <AddCommentForm sendComment={handleSandComment} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

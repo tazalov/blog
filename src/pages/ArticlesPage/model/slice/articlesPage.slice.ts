@@ -27,14 +27,23 @@ const articlesPageSlice = createSlice({
     view: ArticleViewMode.SMALL,
     ids: [],
     entities: {},
+    page: 1,
+    hasMore: true,
   }),
   reducers: {
     setView: (state, action: PayloadAction<ArticleViewMode>) => {
       state.view = action.payload;
       localStorage.setItem(ARTICLE_VIEW_LS_KEY, action.payload);
     },
+    // TODO TEST
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
     initState: (state) => {
-      state.view = localStorage.getItem(ARTICLE_VIEW_LS_KEY) as ArticleViewMode;
+      const viewMode = localStorage.getItem(ARTICLE_VIEW_LS_KEY) as ArticleViewMode;
+      state.view = viewMode;
+      //* вычисляем размер порции в зависимости от режима просмотра статей
+      state.limit = viewMode === ArticleViewMode.BIG ? 4 : 8;
     },
   },
   extraReducers: (builder) => {
@@ -45,7 +54,9 @@ const articlesPageSlice = createSlice({
     builder.addCase(fetchArticlesList.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = undefined;
-      articlesAdapter.setAll(state, action.payload);
+      articlesAdapter.addMany(state, action.payload);
+      //* если пришел не пустой массив статей, значит еще можно что то подгрузить, если нет, то мы больше не вызываем санку
+      state.hasMore = action.payload.length > 0;
     });
     builder.addCase(fetchArticlesList.rejected, (state, action) => {
       state.isLoading = false;

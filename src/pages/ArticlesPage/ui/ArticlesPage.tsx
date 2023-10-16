@@ -26,7 +26,14 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageError,
   getArticlesViewMode,
+  getArticlesPageNum,
+  getArticlesPageHasMore,
 } from '../model/selectors/articlesPage';
+import { Page } from '@/shared/ui/Page/Page';
+import {
+  fetchNextArticlePage,
+} from '@/pages/ArticlesPage/model/services/fetchNextArticlePage/fetchNextArticlePage';
+import { Text } from '@/shared/ui/Text/Text';
 
 const initialReducers: ReducersList = {
   articlesPage: articlesPageReducer,
@@ -41,19 +48,29 @@ const ArticlesPage: FC = ({}) => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const viewMode = useSelector(getArticlesViewMode);
+  const page = useSelector(getArticlesPageNum);
+  const hasMore = useSelector(getArticlesPageHasMore);
 
   const handleChangeViewMode = useCallback((viewMode: ArticleViewMode) => {
     dispatch(articlesPageActions.setView(viewMode));
   }, [dispatch]);
 
+  const handleLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlePage());
+  }, [dispatch]);
+
   useInitialEffect(() => {
-    dispatch(fetchArticlesList());
+    //* порядок диспатчей важен, т.к. нам нужно сначала проинициализировать отображение (см. слайс, там мы ставим лимит и тип отображения)
     dispatch(articlesPageActions.initState());
+    dispatch(fetchArticlesList({
+      page: 1,
+    }));
   });
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <div className={cn(s.ArticlesPage, {}, [])}>
+      <Page handleScrollEnd={handleLoadNextPart} className={cn(s.ArticlesPage, {}, [])}>
+        {error && <Text title={error} />}
         {t('ArticlesPage')}
         <ArticleViewSwitcher viewMode={viewMode} changeView={handleChangeViewMode} />
         <ArticleList
@@ -61,7 +78,7 @@ const ArticlesPage: FC = ({}) => {
           viewMode={viewMode}
           articles={articles}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

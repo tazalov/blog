@@ -40,19 +40,19 @@
 }
 
 .SMALL {
-  width: 230px;
+  width: 330px;
   transition: 0.2s;
   cursor: pointer;
 
   .imgWrapper {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     position: relative;
   }
 
   .img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
   }
 

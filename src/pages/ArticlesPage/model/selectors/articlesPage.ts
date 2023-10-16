@@ -6,3 +6,10 @@ export const getArticlesPageIsLoading = (state: StateSchema) => state.articlesPa
 export const getArticlesPageError = (state: StateSchema) => state.articlesPage?.error;
 
 export const getArticlesViewMode = (state: StateSchema) => state.articlesPage?.view || ArticleViewMode.SMALL;
+
+// TODO TEST
+export const getArticlesPageLimit = (state: StateSchema) => state.articlesPage?.limit || 8;
+
+export const getArticlesPageHasMore = (state: StateSchema) => state.articlesPage?.hasMore;
+
+export const getArticlesPageNum = (state: StateSchema) => state.articlesPage?.page || 1;

@@ -35,7 +35,7 @@ export const ArticleListItemSkeleton = memo(
       <div className={cn(s.ArticleListItem, {}, [className, s[viewMode]])}>
         <Card>
           <div className={s.imgWrapper}>
-            <Skeleton width={200} height={200} className={s.img} />
+            <Skeleton width={300} height={300} className={s.img} />
           </div>
           <div className={s.infoWrapper}>
             <Skeleton width={130} height={16} />

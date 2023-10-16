@@ -116,12 +116,8 @@ export const isLoading: Story = {
   decorators: [StoreDecorator({
     articlesPage: {
       view: ArticleViewMode.SMALL,
-      ids: ['1', '2', '3'],
-      entities: {
-        1: articles[0],
-        2: articles[1],
-        3: articles[2],
-      },
+      ids: [],
+      entities: {},
       isLoading: true,
     },
   })],

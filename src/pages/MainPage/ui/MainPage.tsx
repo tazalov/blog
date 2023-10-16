@@ -1,14 +1,15 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Counter } from '@/entities/counter';
+import { Page } from '@/shared/ui/Page/Page';
 
 const MainPage = () => {
   const { t } = useTranslation('main');
   return (
-    <div>
+    <Page>
       <Counter />
       {t('Main page')}
-    </div>
+    </Page>
   );
 };
 

@@ -24,13 +24,13 @@ export const Sidebar = memo(({ className }: SidebarPT) => {
   )), [collapsed, sideBarItems]);
 
   return (
-    <div
+    <menu
       data-testid="sidebar"
       className={cn(s.Sidebar, { [s.collapsed]: collapsed }, [className])}
     >
-      <div className={s.items}>
+      <nav className={s.items}>
         {itemsList}
-      </div>
+      </nav>
       <Button
         data-testid="sidebar-toggle"
         type="button"
@@ -46,6 +46,6 @@ export const Sidebar = memo(({ className }: SidebarPT) => {
         <ThemeSwitcher />
         <LangSwitcher />
       </div>
-    </div>
+    </menu>
   );
 });

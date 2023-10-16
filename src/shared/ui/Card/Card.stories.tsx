@@ -6,6 +6,7 @@ import { Button } from '@/shared/ui/Button/Button';
 const meta = {
   title: 'shared/Card',
   component: Card,
+  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },

@@ -53,7 +53,7 @@ export const BigIsLoading: Story = {
   args: {
     isLoading: true,
     viewMode: ArticleViewMode.BIG,
-    articles: articlesList(ArticleViewMode.BIG),
+    articles: [],
   },
 };
 
@@ -68,6 +68,6 @@ export const SmallIsLoading: Story = {
   args: {
     isLoading: true,
     viewMode: ArticleViewMode.SMALL,
-    articles: articlesList(ArticleViewMode.SMALL),
+    articles: [],
   },
 };

@@ -8,7 +8,7 @@ import {
 } from '@/entities/article/ui/ArticleListItem/ArticleListItemSkeleton';
 
 const getSkeletons = (viewMode: ArticleViewMode) => (
-  new Array(viewMode === ArticleViewMode.SMALL ? 9 : 3).fill(0).map((el, i) => (
+  new Array(viewMode === ArticleViewMode.SMALL ? 4 : 2).fill(0).map((el, i) => (
     <ArticleListItemSkeleton
       key={i}
       viewMode={viewMode}
@@ -28,14 +28,6 @@ export const ArticleList = memo(
   ({
     className, articles, isLoading, viewMode = ArticleViewMode.SMALL,
   }: ArticleListPT) => {
-    if (isLoading) {
-      return (
-        <div className={cn(s.ArticleList, {}, [className, s[viewMode]])}>
-          {getSkeletons(viewMode)}
-        </div>
-      );
-    }
-
     const renderArticles = (article: ArticleT) => (
       <ArticleListItem
         key={article.id}
@@ -50,6 +42,7 @@ export const ArticleList = memo(
         {articles.length > 0
           ? articles.map(renderArticles)
           : null}
+        {isLoading && getSkeletons(viewMode)}
       </div>
     );
   },
