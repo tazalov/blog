@@ -29,6 +29,7 @@ const articlesPageSlice = createSlice({
     entities: {},
     page: 1,
     hasMore: true,
+    _inited: false,
   }),
   reducers: {
     setView: (state, action: PayloadAction<ArticleViewMode>) => {
@@ -43,6 +44,7 @@ const articlesPageSlice = createSlice({
       state.view = viewMode;
       //* вычисляем размер порции в зависимости от режима просмотра статей
       state.limit = viewMode === ArticleViewMode.BIG ? 4 : 8;
+      state._inited = true;
     },
   },
   extraReducers: (builder) => {

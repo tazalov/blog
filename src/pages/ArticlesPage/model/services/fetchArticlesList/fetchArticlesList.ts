@@ -10,7 +10,7 @@ interface FetchArticlesListPT {
 }
 
 export const fetchArticlesList = createAsyncThunk<ArticleT[], FetchArticlesListPT, ThunkConfig<string>>(
-  'articleDetails/fetchCommentsByArticleId',
+  'articlesPage/fetchArticlesList',
   async ({ page = 1 }, thunkAPI) => {
     const { extra, rejectWithValue, getState } = thunkAPI;
 

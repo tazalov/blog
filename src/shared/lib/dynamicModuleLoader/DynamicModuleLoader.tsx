@@ -32,9 +32,14 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderPT> = ({
   // ? Дополнительные диспатчи нужны, чтобы увидеть в девтулзах, что мы удалили и редюсер
 
   useEffect(() => {
+    const mountedReducers = store.reducerManager.getReducerMap();
+
     Object.entries(reducers).forEach(([reducerName, reducer]) => {
-      store.reducerManager.add(reducerName as KeyReducersT, reducer);
-      dispatch({ type: `@INIT ${reducerName} reducer` });
+      const mounted = mountedReducers[reducerName as KeyReducersT];
+      if (!mounted) {
+        store.reducerManager.add(reducerName as KeyReducersT, reducer);
+        dispatch({ type: `@INIT ${reducerName} reducer` });
+      }
     });
 
     //* ну и удаляем его при размонтировании компонента

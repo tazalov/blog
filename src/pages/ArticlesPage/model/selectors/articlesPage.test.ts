@@ -8,6 +8,7 @@ import {
   getArticlesPageLimit,
   getArticlesPageHasMore,
   getArticlesPageNum,
+  getArticlesPageInited,
 } from './articlesPage';
 
 const state: DeepPartial<StateSchema> = {
@@ -20,12 +21,13 @@ const state: DeepPartial<StateSchema> = {
     limit: 10,
     ids: [],
     entities: {},
+    _inited: false,
   },
 };
 
 const otherState: DeepPartial<StateSchema> = {};
 
-describe('comments.test', () => {
+describe('articlesPage selectors', () => {
   it('isLoading getting is correct', () => {
     expect(getArticlesPageIsLoading(state as StateSchema)).toBeTruthy();
     expect(getArticlesPageIsLoading(otherState as StateSchema)).toBeFalsy();
@@ -47,5 +49,9 @@ describe('comments.test', () => {
   it('page getting is correct', () => {
     expect(getArticlesPageNum(state as StateSchema)).toBe(11);
     expect(getArticlesPageNum(otherState as StateSchema)).toBe(1);
+  });
+  it('_inited getting is correct', () => {
+    expect(getArticlesPageInited(state as StateSchema)).toBeFalsy();
+    expect(getArticlesPageInited(otherState as StateSchema)).not.toBeDefined();
   });
 });

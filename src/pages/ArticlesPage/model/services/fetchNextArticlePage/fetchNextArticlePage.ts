@@ -11,7 +11,7 @@ import {
 } from '../../services/fetchArticlesList/fetchArticlesList';
 
 export const fetchNextArticlePage = createAsyncThunk<void, void, ThunkConfig<string>>(
-  'articleDetails/fetchNextArticlePage',
+  'articlesPage/fetchNextArticlePage',
   async (_, thunkAPI) => {
     const { getState, dispatch } = thunkAPI;
     const hasMore = getArticlesPageHasMore(getState());

@@ -20,20 +20,18 @@ import {
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
-  fetchArticlesList,
-} from '../model/services/fetchArticlesList/fetchArticlesList';
-import {
   getArticlesPageIsLoading,
   getArticlesPageError,
   getArticlesViewMode,
-  getArticlesPageNum,
-  getArticlesPageHasMore,
 } from '../model/selectors/articlesPage';
 import { Page } from '@/shared/ui/Page/Page';
 import {
   fetchNextArticlePage,
-} from '@/pages/ArticlesPage/model/services/fetchNextArticlePage/fetchNextArticlePage';
+} from '../model/services/fetchNextArticlePage/fetchNextArticlePage';
 import { Text } from '@/shared/ui/Text/Text';
+import {
+  initArticlesPage,
+} from '../model/services/initArticlesPage/initArticlesPage';
 
 const initialReducers: ReducersList = {
   articlesPage: articlesPageReducer,
@@ -48,8 +46,6 @@ const ArticlesPage: FC = ({}) => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const viewMode = useSelector(getArticlesViewMode);
-  const page = useSelector(getArticlesPageNum);
-  const hasMore = useSelector(getArticlesPageHasMore);
 
   const handleChangeViewMode = useCallback((viewMode: ArticleViewMode) => {
     dispatch(articlesPageActions.setView(viewMode));
@@ -60,11 +56,7 @@ const ArticlesPage: FC = ({}) => {
   }, [dispatch]);
 
   useInitialEffect(() => {
-    //* порядок диспатчей важен, т.к. нам нужно сначала проинициализировать отображение (см. слайс, там мы ставим лимит и тип отображения)
-    dispatch(articlesPageActions.initState());
-    dispatch(fetchArticlesList({
-      page: 1,
-    }));
+    dispatch(initArticlesPage());
   });
 
   return (
