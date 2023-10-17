@@ -35,7 +35,6 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernamePT, ThunkCo
 
       //* сетаем в другой стейт наш ответ с сервера
       dispatch(userActions.setAuthData(response.data));
-      extra.navigate?.('/');
 
       return response.data;
     } catch (e) {
