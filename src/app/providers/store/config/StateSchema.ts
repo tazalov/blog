@@ -10,10 +10,12 @@ import { ArticleDetailsSchema } from '@/entities/article';
 import { ArticleDetailsCommentSchema } from '@/pages/ArticleDetailsPage';
 import { AddCommentFormSchema } from '@/features/add-comment-form';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';
+import { SaveScrollSchema } from '@/features/save-scroll';
 
 export interface StateSchema {
   counter: CounterSchema
   user: UserSchema
+  saveScroll: SaveScrollSchema
 
   // async reducers
   loginForm?: LoginSchema

@@ -5,6 +5,7 @@ import { counterReducer } from '@/entities/counter';
 import { userReducer } from '@/entities/user';
 import { createReducerManager } from '../config/reducerManager';
 import { $api } from '@/shared/api/api';
+import { saveScrollReducer } from '@/features/save-scroll';
 
 /*
  * Шлем нахер доку тулкита с ее ReturnType для получения типа стейта
@@ -27,6 +28,7 @@ const createReduxStore = (
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
+    saveScroll: saveScrollReducer,
   };
 
   //* Создали нашего красавчика и передали в него синхронные редюсеры

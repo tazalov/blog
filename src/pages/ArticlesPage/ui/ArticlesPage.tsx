@@ -60,7 +60,7 @@ const ArticlesPage: FC = ({}) => {
   });
 
   return (
-    <DynamicModuleLoader reducers={initialReducers}>
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={false}>
       <Page handleScrollEnd={handleLoadNextPart} className={cn(s.ArticlesPage, {}, [])}>
         {error && <Text title={error} />}
         {t('ArticlesPage')}
