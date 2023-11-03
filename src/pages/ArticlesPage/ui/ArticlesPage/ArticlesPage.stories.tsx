@@ -85,7 +85,7 @@ const articles: ArticleT[] = [
 ];
 
 const meta = {
-  title: 'pages/ArticlesPage',
+  title: 'pages/ArticlesPage/ArticlesPage',
   component: ArticlesPage,
   parameters: {
     layout: 'fullscreen',

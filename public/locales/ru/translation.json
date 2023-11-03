@@ -13,5 +13,18 @@
   "Invalid username or password": "Неверное имя пользователя или пароль",
   "Logout": "Выйти",
   "Profile": "Профиль",
-  "Articles": "Статьи"
+  "Articles": "Статьи",
+  "Sort by": "Сортировать по",
+  "Search": "Поиск",
+  "ascending": "возрастанию",
+  "descending": "убыванию",
+  "by": "по",
+  "date creating": "дате создания",
+  "views": "просмотрам",
+  "name": "имени",
+  "All": "Все",
+  "IT": "Айти",
+  "Economics": "Экономика",
+  "Science": "Наука",
+  "Articles not found!": "Статьи не найдены!"
 }

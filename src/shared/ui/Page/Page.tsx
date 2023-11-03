@@ -50,7 +50,7 @@ export const Page = memo(
     return (
       <section ref={wrapperRef} className={cn(s.Page, {}, [className])} onScroll={handleScroll}>
         {children}
-        <div ref={triggerRef} />
+        {handleScrollEnd && <div className={s.trigger} ref={triggerRef} />}
       </section>
     );
   },

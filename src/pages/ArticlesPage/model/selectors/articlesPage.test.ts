@@ -1,6 +1,10 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/store';
-import { ArticleViewMode } from '@/entities/article';
+import {
+  ArticleViewMode,
+  ArticleSortField,
+  ArticleType,
+} from '@/entities/article';
 import {
   getArticlesPageIsLoading,
   getArticlesPageError,
@@ -21,6 +25,10 @@ const state: DeepPartial<StateSchema> = {
     limit: 10,
     ids: [],
     entities: {},
+    order: 'asc',
+    sort: ArticleSortField.VIEWS,
+    search: '',
+    type: ArticleType.ALL,
     _inited: false,
   },
 };

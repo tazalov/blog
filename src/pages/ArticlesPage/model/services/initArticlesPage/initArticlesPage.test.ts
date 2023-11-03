@@ -12,7 +12,9 @@ describe('initArticlesPage async thunk', () => {
       },
     });
 
-    await thunk.callThunk();
+    const searchParams = new URLSearchParams();
+
+    await thunk.callThunk(searchParams);
 
     expect(thunk.dispatch).toBeCalledTimes(4); // pending - fulfilled - и 2 штуки внутри санки
     expect(fetchArticlesList).toBeCalledWith({ page: 1 });
@@ -25,7 +27,9 @@ describe('initArticlesPage async thunk', () => {
       },
     });
 
-    await thunk.callThunk();
+    const searchParams = new URLSearchParams();
+
+    await thunk.callThunk(searchParams);
 
     expect(thunk.dispatch).toBeCalledTimes(2); // pending - fulfilled
     expect(fetchArticlesList).not.toHaveBeenCalled();

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/shared/lib/classNames/cn';
 import s from './ArticleList.module.scss';
 import { ArticleT, ArticleViewMode } from '../../model/types/article';
@@ -6,6 +7,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import {
   ArticleListItemSkeleton,
 } from '@/entities/article/ui/ArticleListItem/ArticleListItemSkeleton';
+import { Text, TextAlign, TextSize } from '@/shared/ui/Text/Text';
 
 const getSkeletons = (viewMode: ArticleViewMode) => (
   new Array(viewMode === ArticleViewMode.SMALL ? 4 : 2).fill(0).map((el, i) => (
@@ -28,6 +30,8 @@ export const ArticleList = memo(
   ({
     className, articles, isLoading, viewMode = ArticleViewMode.SMALL,
   }: ArticleListPT) => {
+    const { t } = useTranslation();
+
     const renderArticles = (article: ArticleT) => (
       <ArticleListItem
         key={article.id}
@@ -41,7 +45,7 @@ export const ArticleList = memo(
       <div className={cn(s.ArticleList, {}, [className, s[viewMode]])}>
         {articles.length > 0
           ? articles.map(renderArticles)
-          : null}
+          : <Text size={TextSize.L} title={t('Articles not found!')} align={TextAlign.CENTER} />}
         {isLoading && getSkeletons(viewMode)}
       </div>
     );

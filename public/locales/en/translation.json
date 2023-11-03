@@ -13,5 +13,18 @@
   "Invalid username or password": "Invalid username or password",
   "Logout": "Logout",
   "Profile": "Profile",
-  "Articles": "Articles"
+  "Articles": "Articles",
+  "Sort by": "Sort by",
+  "Search": "Search",
+  "ascending": "ascending",
+  "descending": "descending",
+  "by": "by",
+  "date creating": "date creating",
+  "views": "views",
+  "name": "name",
+  "All": "All",
+  "IT": "IT",
+  "Economics": "Economics",
+  "Science": "Science",
+  "Articles not found!": "Articles not found!"
 }

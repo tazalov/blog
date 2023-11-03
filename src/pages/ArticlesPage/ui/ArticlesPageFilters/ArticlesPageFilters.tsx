@@ -8,6 +8,7 @@ import {
   ArticleViewSwitcher,
   ArticleSortSelect,
   ArticleSortField,
+  ArticleTypeTabs,
 } from '@/entities/article';
 import { articlesPageActions } from '../../model/slice/articlesPage.slice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
@@ -16,14 +17,16 @@ import {
   getArticlesPageSort,
   getArticlesPageSearch,
   getArticlesPageOrder,
+  getArticlesPageType,
 } from '../../model/selectors/articlesPage';
 import { Card } from '@/shared/ui/Card/Card';
 import { Input } from '@/shared/ui/Input/Input';
 import { SortOrder } from '@/shared/types';
 import {
   fetchArticlesList,
-} from '@/pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
+} from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
+import { ArticleType } from '@/entities/article/model/types/article';
 
 interface ArticlesPageFiltersPT {
   className?: string;
@@ -36,6 +39,7 @@ export const ArticlesPageFilters = memo(
     const sort = useSelector(getArticlesPageSort);
     const search = useSelector(getArticlesPageSearch);
     const order = useSelector(getArticlesPageOrder);
+    const type = useSelector(getArticlesPageType);
 
     const dispatch = useAppDispatch();
 
@@ -67,6 +71,11 @@ export const ArticlesPageFilters = memo(
       fetchDataDebounced();
     }, [dispatch, fetchDataDebounced]);
 
+    const handleChangeType = useCallback((value: ArticleType) => {
+      dispatch(articlesPageActions.setType(value));
+      fetchData();
+    }, [dispatch, fetchData]);
+
     return (
       <div className={cn(s.ArticlesPageFilters, {}, [className])}>
         <div className={s.sortWrapper}>
@@ -81,6 +90,7 @@ export const ArticlesPageFilters = memo(
         <Card className={s.search}>
           <Input placeholder={t('Search')} value={search} onChange={handleChangeSearch} />
         </Card>
+        <ArticleTypeTabs className={s.types} value={type} handleTabChange={handleChangeType} />
       </div>
     );
   },
